@@ -5,7 +5,8 @@ const BOOLEAN_VALUES : Array[String] = [
 	"corrupted",
 	"synthesised",
 	"identified",
-	"fractured"
+	"fractured",
+	"transfigured"
 ]
 
 const INTEGER_VALUES : Array[String] = [
@@ -15,9 +16,12 @@ const INTEGER_VALUES : Array[String] = [
 	"linked_sockets",
 	"delirium_cluster_size",
 	"stack_size",
-	"area_level"
+	"area_level",
+	"gem_level",
+	"quality"
 ]
 
+var m_strictness : int = 0
 var m_global_label_overrides : Dictionary[StringName, Variant] = {}
 var m_string_collections : Dictionary[StringName, PackedStringArray] = {}
 var m_macros : Dictionary[StringName, String] = {}
@@ -32,6 +36,8 @@ func get_constructed_filter() -> Array[PackedStringArray]:
 func generate_filter(layout : Dictionary) -> void:
 	if m_constructed_filter.is_empty() == false:
 		return
+
+	m_strictness = layout.get("strictness", 0)
 
 	for condition : StringName in layout.get("conditions", {}).keys():
 		m_conditions[condition] = layout.get("conditions", {})[condition]
@@ -129,13 +135,27 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 					return null
 
 				# Rules without a condition are always added.
-				if has_key.call("on_condition"):
+				if has_key.call("any_condition"):
 					var is_enabled : bool = false
 
 					# Any true condition is enough.
-					for condition : String in get_value.call("on_condition"):
-						if m_conditions.get(condition, false):
+					var conditions : Dictionary = get_value.call("any_condition")
+					for condition : String in conditions.keys():
+						if m_conditions.get(condition, false) == conditions[condition]:
 							is_enabled = true
+							break
+
+					if is_enabled == false:
+						continue
+
+				if has_key.call("all_conditions"):
+					var is_enabled : bool = true
+
+					# We need each condition to match.
+					var conditions : Dictionary = get_value.call("all_conditions")
+					for condition : String in conditions.keys():
+						if m_conditions.get(condition, false) != conditions[condition]:
+							is_enabled = false
 							break
 
 					if is_enabled == false:
@@ -207,7 +227,7 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				if has_key.call("influence"):
 					if typeof(get_value.call("influence")) == TYPE_ARRAY:
 						var rarities : PackedStringArray = [
-							"\tHasInfluence =="
+							"\tHasInfluence"
 						]
 
 						for influence : String in get_value.call("influence"):
@@ -215,7 +235,7 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 
 						generated_rule.append(" ".join(rarities))
 					else:
-						generated_rule.append("\tHasInfluence == %s" % get_value.call("influence").to_pascal_case())
+						generated_rule.append("\tHasInfluence %s" % get_value.call("influence").to_pascal_case())
 
 				for boolean_value : String in BOOLEAN_VALUES:
 					if has_key.call(boolean_value):
@@ -241,6 +261,14 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 							generated_rule.append("\t%s == %d" % [ filter_name, roundi(value) ])
 						else:
 							generated_rule.append("\t%s %s" % [ filter_name, integer_value_variant ])
+
+				# ===========================
+				# Mod check
+				# ===========================
+				if has_key.call("has_mod"):
+					generated_rule.append(_construct_has_mod_line(get_value.call("has_mod"), false))
+				elif has_key.call("exact_has_mod"):
+					generated_rule.append(_construct_has_mod_line(get_value.call("exact_has_mod"), true))
 
 				# ===========================
 				# Label
@@ -369,6 +397,35 @@ func _construct_class_line(class_info : Variant, exact : bool) -> String:
 
 	return ""
 
+func _construct_has_mod_line(mod_info : Variant, exact : bool) -> String:
+	if typeof(mod_info) == TYPE_ARRAY:
+		var base_type_string : PackedStringArray = []
+
+		for type : String in mod_info:
+			base_type_string.append("\"%s\"" % type)
+
+		if exact:
+			return "\tHasExplicitMod == %s" % " ".join(base_type_string)
+		else:
+			return "\tHasExplicitMod %s" % " ".join(base_type_string)
+	elif typeof(mod_info) == TYPE_STRING:
+		var line_start : String = ""
+
+		if exact:
+			line_start = "\tHasExplicitMod =="
+		else:
+			line_start = "\tHasExplicitMod"
+
+		if mod_info.begins_with("_"):
+			if m_string_collections.has(mod_info):
+				return "%s %s" % [ line_start, " ".join(m_string_collections[mod_info]) ]
+			else:
+				return "%s %s" % [ line_start, m_macros[mod_info] ]
+		else:
+			return "%s \"%s\"" % [ line_start, mod_info ]
+
+	return ""
+
 func _schema_to_filter_colour(schema_colour : String) -> String:
 	var colour : Color = _parse_colour(schema_colour)
 
@@ -403,6 +460,12 @@ func _schema_to_filter_name(in_name : String) -> String:
 			return "Identified"
 		"fractured":
 			return "FracturedItem"
+		"gem_level":
+			return "GemLevel"
+		"quality":
+			return "Quality"
+		"transfigured":
+			return "TransfiguredGem"
 		_:
 			printerr("Could not translate schema name '%s'!" % in_name)
 			return ""

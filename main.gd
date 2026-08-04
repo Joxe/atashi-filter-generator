@@ -32,6 +32,8 @@ func _generate_filter() -> void:
 		var filter_specific_config : Dictionary = filter.get("config", {})
 
 		combined_config.merge(filter_specific_config)
+		if base_config.has("conditions") && filter_specific_config.has("conditions"):
+			combined_config["conditions"].merge(filter_specific_config["conditions"])
 
 		# Load the layout and string collections and make them into Dictionaries
 		var fa_layout : FileAccess = FileAccess.open(combined_config["layout"], FileAccess.ModeFlags.READ)
@@ -63,9 +65,14 @@ func _generate_filter() -> void:
 			#for line : String in category:
 			#	print(line)
 
-		var fa_filter : FileAccess = FileAccess.open("user://%s.filter" % filter["name"], FileAccess.ModeFlags.WRITE_READ)
-		fa_filter.store_string("\n".join(final_filter))
-		print("Saved user://%s.filter" % filter["name"])
+		if layout.get("conditions", {}).get("ruthless", false):
+			var fa_filter : FileAccess = FileAccess.open("C:/Users/Joxe/Documents/My Games/Path of Exile/%s.ruthlessfilter" % filter["name"], FileAccess.ModeFlags.WRITE_READ)
+			fa_filter.store_string("\n".join(final_filter))
+			print("Saved C:/Users/Joxe/Documents/My Games/Path of Exile/%s.ruthlessfilter" % filter["name"])
+		else:
+			var fa_filter : FileAccess = FileAccess.open("C:/Users/Joxe/Documents/My Games/Path of Exile/%s.filter" % filter["name"], FileAccess.ModeFlags.WRITE_READ)
+			fa_filter.store_string("\n".join(final_filter))
+			print("Saved C:/Users/Joxe/Documents/My Games/Path of Exile/%s.filter" % filter["name"])
 
 		# For now we just throw away the node after it's done, but we could potentially save it to do
 		generator.queue_free()
