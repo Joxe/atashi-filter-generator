@@ -1,0 +1,23 @@
+{
+	"filters": [
+		{
+			"name": "Atashi 3.29 Standard"
+		},
+		{
+			"name": "Atashi 3.29 Strict",
+			"config": {
+				"strictness": 1.0
+			}
+		}
+	],
+	"global_config": {
+		"global_label_overrides": {
+			"font_size": 28.0
+		},
+		"conditions": {
+			"patch_3.29": true
+		},
+		"string_collections": "./string_collections.json",
+		"layout": "./filter_layout.json"
+	}
+}

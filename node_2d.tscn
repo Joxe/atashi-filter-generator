@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://jct0ice44il3"]
+
+[ext_resource type="Script" uid="uid://bd0sdknlei2jr" path="res://main.gd" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D" unique_id=1376592695 node_paths=PackedStringArray("m_start_button", "m_filter_label")]
+script = ExtResource("1_wtcfe")
+m_start_button = NodePath("HBoxContainer/Button")
+m_filter_config_path = "res://filter_config.json"
+m_filter_label = NodePath("HBoxContainer/RichTextLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1292042580]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 1154.0
+offset_bottom = 649.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=49550745]
+layout_mode = 2
+text = "Do the thing"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer" unique_id=783955860]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "	MinimapIcon 0 Red Star
+
+Hide
+	Class == \"Skill Gems\" \"Support Gems\"
+	AreaLevel > 38
+"

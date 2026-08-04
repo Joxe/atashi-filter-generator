@@ -1,0 +1,437 @@
+{
+	"_all_item_classes": [
+		"Body Armours",
+		"Boots",
+		"Bows",
+		"Claws",
+		"Daggers",
+		"Gloves",
+		"Helmets",
+		"One Hand Axes",
+		"One Hand Maces",
+		"One Hand Swords",
+		"Quivers",
+		"Rune Daggers",
+		"Sceptres",
+		"Shields",
+		"Staves",
+		"Thrusting One Hand Swords",
+		"Two Hand Axes",
+		"Two Hand Maces",
+		"Two Hand Swords",
+		"Wands",
+		"Warstaves"
+	],
+	"_all_jewels": [
+		"Cobalt Jewel",
+		"Crimson Jewel",
+		"Viridian Jewel",
+		"Ghastly Eye Jewel",
+		"Murderous Eye Jewel",
+		"Searching Eye Jewel",
+		"Hypnotic Eye Jewel"
+	],
+	"_awakened_gems": [
+		"Awakened Arrow Nova Support",
+		"Awakened Blasphemy Support",
+		"Awakened Brutality Support",
+		"Awakened Burning Damage Support",
+		"Awakened Cast On Critical Strike Support",
+		"Awakened Cast While Channelling Support",
+		"Awakened Chain Support",
+		"Awakened Elemental Damage with Attacks Support",
+		"Awakened Elemental Focus Support",
+		"Awakened Empower Support",
+		"Awakened Enhance Support",
+		"Awakened Enlighten Support",
+		"Awakened Fork Support",
+		"Awakened Generosity Support",
+		"Awakened Greater Multiple Projectiles Support",
+		"Awakened Increased Area of Effect Support",
+		"Awakened Lightning Penetration Support",
+		"Awakened Minion Damage Support",
+		"Awakened Multistrike Support",
+		"Awakened Spell Cascade Support",
+		"Awakened Spell Echo Support",
+		"Awakened Unbound Ailments Support",
+		"Awakened Unleash Support",
+		"Awakened Void Manipulation Support"
+	],
+	"_giga_support_gems": [
+		"Greater Spell Cascade Support",
+		"Eclipse Support",
+		"Invert the Rules Support",
+		"Cast on Ward Break Support",
+		"Vaal Sacrifice Support",
+		"Greater Spell Echo Support",
+		"Vaal Temptation Support",
+		"Machinations Support",
+		"Pyre Support",
+		"Foulgrasp Support",
+		"Hiveborn Support",
+		"Scornful Herald Support",
+		"Cull the Weak Support",
+		"Greater Ancestral Call Support",
+		"Fissure Support",
+		"Hextoad Support",
+		"Hexpass Support",
+		"Greater Fork Support",
+		"Greater Chain Support",
+		"Lethal Dose Support",
+		"Companionship Support",
+		"Divine Sentinel Support",
+		"Annihilation Support",
+		"Invention Support",
+		"Greater Kinetic Instability Support",
+		"Cooldown Recovery Support",
+		"Voidstorm Support",
+		"Void Shockwave Support",
+		"Eldritch Blasphemy Support",
+		"Gluttony Support",
+		"Overheat Support",
+		"Greater Multistrike Support",
+		"Congregation Support",
+		"Frostmage Support",
+		"Greater Devour Support",
+		"Greater Unleash Support",
+		"Pacifism Support",
+		"Bloodsoaked Banner Support",
+		"Unholy Trinity Support",
+		"Overloaded Intensity Support",
+		"Transfusion Support"
+	],
+	"_dog_currencies": [
+		"Transmutation Shard",
+		"Alchemy Shard",
+		"Alteration Shard"
+	],
+	"_common_currencies": [
+		"Orb of Transmutation",
+		"Orb of Augmentation",
+		"Orb of Alteration"
+	],
+	"_uncommon_currencies": [
+		"Blacksmith's Whetstone",
+		"Armourer's Scrap",
+		"Orb of Binding",
+		"Orb of Alchemy",
+		"Orb of Chance",
+		"Jeweller's Orb"
+	],
+	"_rare_currencies": [
+		"Orb of Fusing",
+		"Orb of Unmaking"
+	],
+	"_nice_currencies": [
+		"Orb of Scouring",
+		"Regal Orb",
+		"Lesser Eldritch Ichor",
+		"Lesser Eldritch Ember",
+		"Chaos Orb",
+		"Blessed Orb",
+		"Vaal Orb",
+		"Orb of Regret",
+		"Instilling Orb",
+		"Stacked Deck",
+		"Enkindling Orb",
+		"Tainted Chromatic Orb",
+		"Refracting Fog"
+	],
+	"_high_tier_currencies": [
+		"Exalted Orb",
+		"Gemcutter's Prism",
+		"Glassblower's Bauble",
+		"Exalted Shard",
+		"Greater Eldritch Ichor",
+		"Greater Eldritch Ember",
+		"Crescent Splinter",
+		"Veiled Chaos Orb",
+		"Memory of Loneliness",
+		"Ancient Orb",
+		"Chromatic Orb"
+	],
+	"_giga_tier_currencies": [
+		"Divine Orb",
+		"Mirror of Kalandra",
+		"Mirror Shard",
+		"Orb of Conflict",
+		"Crusader's Exalted Orb",
+		"Awakener's Orb",
+		"Fracturing Orb",
+		"Orb of Annulment",
+		"Valdo's Puzzle Box"
+	],
+	"_leader_veiled_mods": [
+		"Catarina's Veiled",
+		"Elreon's Veiled",
+		"Leo's Veiled",
+		"Rin's Veiled",
+		"Vagan's Veiled",
+		"Vorici's Veiled",
+		"Gravicius' Veiled",
+		"Guff's Veiled",
+		"Haku's",
+		"It That Fled's Veiled",
+		"Korell's Veiled",
+		"of Aisling's Veil",
+		"of Cameria's Veil",
+		"of Hillock's Veil",
+		"of Janus' Veil",
+		"of Jorgin's Veil",
+		"Riker",
+		"Tora's Veiled"
+	],
+	"_t1_claws": [
+		"Imperial Claw",
+		"Terror Claw",
+		"Gemini Claw",
+		"Shadow Fangs",
+		"Malign Fangs",
+		"Void Fangs"
+	],
+	"_t2_claws": [
+		"Great White Claw",
+		"Throat Stabber",
+		"Hellion's Paw",
+		"Eye Gouger",
+		"Vaal Claw"
+	],
+	"_t1_daggers": [
+		"Pneumatic Dagger",
+		"Pressurised Dagger",
+		"Hollowpoint Dagger",
+		"Sai",
+		"Ambusher",
+		"Gutting Knife"
+	],
+	"_t2_daggers": [
+		"Poignard",
+		"Flaying Knife",
+		"Trisula"
+	],
+	"_t1_wands": [
+		"Profane Wand",
+		"Prophecy Wand",
+		"Tornado Wand",
+		"Opal Wand",
+		"Convoking Wand",
+		"Accumulator Wand"
+	],
+	"_t2_wands": [
+		"Opal Wand",
+		"Tornado Wand",
+		"Pagan Wand",
+		"Engraved Wand",
+		"Coiled Wand",
+		"Congregator Wand",
+		"Assembler Wand"
+	],
+	"_t1_1h_swords": [
+		"Tiger Hook",
+		"Midnight Blade",
+		"Eternal Sword",
+		"Vaal Blade",
+		"Anarchic Spiritblade"
+	],
+	"_t2_1h_swords": [
+		"Legion Sword",
+		"Gladius",
+		"Corsair Sword",
+		"Gemstone Sword",
+		"Capricious Spiritblade"
+	],
+	"_t1_thrusting_swords": [
+		"Harpy Rapier",
+		"Dragoon Sword",
+		"Dragonbone Rapier",
+		"Vaal Rapier",
+		"Jewelled Foil"
+	],
+	"_t2_thrusting_swords": [
+		"Pecoraro",
+		"Tempered Foil",
+		"Dragonbone Rapier",
+		"Courtesan Sword",
+		"Apex Rapier"
+	],
+	"_t1_1h_axes": [
+		"Royal Axe",
+		"Runic Hatchet",
+		"Psychotic Axe",
+		"Siege Axe"
+	],
+	"_t2_1h_axes": [
+		"Butcher Axe",
+		"Jasper Axe",
+		"Tomahawk",
+		"Disapprobation Axe",
+		"Infernal Axe",
+		"Vaal Hatchet",
+		"Reaver Axe"
+	],
+	"_t1_1h_maces": [
+		"Behemoth Mace",
+		"Nightmare Mace",
+		"Gavel",
+		"Boom Mace"
+	],
+	"_t2_1h_maces": [
+		"Pernach",
+		"Auric Mace"
+	],
+	"_t1_sceptres": [
+		"Void Sceptre",
+		"Opal Sceptre",
+		"Alternating Sceptre",
+		"Stabilising Sceptre",
+		"Oscillating Sceptre"
+	],
+	"_t2_sceptres": [
+		"Sambar Sceptre"
+	],
+	"_t1_rune_daggers": [
+		"Platinum Kris",
+		"Infernal Blade"
+	],
+	"_t2_rune_daggers": [
+		"Demon Dagger",
+		"Imperial Skean",
+		"Ezomyte Dagger",
+		"Flickerflame Blade"
+	],
+	"_t1_bows": [
+		"Assassin Bow",
+		"Thicket Bow",
+		"Spine Bow",
+		"Imperial Bow",
+		"Harbinger Bow",
+		"Maraketh Bow",
+		"Solarine Bow"
+	],
+	"_t2_bows": [
+		"Citadel Bow",
+		"Ranger Bow",
+		"Steelwood Bow",
+		"Decimation Bow",
+		"Highborn Bow",
+		"Foundry Bow",
+		"Hedron Bow"
+	],
+	"_t1_staves": [
+		"Lathi",
+		"Imperial Staff",
+		"Eclipse Staff",
+		"Primordial Staff",
+		"Battery Staff"
+	],
+	"_t2_staves": [
+		"Primordial Staff",
+		"Moon Staff"
+	],
+	"_t1_2h_swords": [
+		"Exquisite Blade",
+		"Infernal Sword",
+		"Lion Sword",
+		"Vaal Greatsword",
+		"Banishing Blade"
+	],
+	"_t2_2h_swords": [
+		"Ezomyte Blade",
+		"Reaver Sword",
+		"Headman's Sword",
+		"Lithe Blade",
+		"Wraith Sword",
+		"Tiger Sword",
+		"Blasting Blade",
+		"Rebuking Blade"
+	],
+	"_t1_2h_maces": [
+		"Terror Maul",
+		"Coronal Maul",
+		"Meatgrinder",
+		"Piledriver",
+		"Imperial Maul",
+		"Colossus Mallet",
+		"Impact Force Propagator"
+	],
+	"_t2_2h_maces": [
+		"Great Mallet",
+		"Steelhead",
+		"Spiny Maul",
+		"Meatgrinder",
+		"Crushing Force Magnifier",
+		"Blunt Force Condenser"
+	],
+	"_t1_2h_axes": [
+		"Despot Axe",
+		"Void Axe",
+		"Vaal Axe"
+	],
+	"_t2_2h_axes": [
+		"Labrys",
+		"Karui Chopper",
+		"Headsman Axe",
+		"Noble Axe",
+		"Shadow Axe"
+	],
+	"_t1_warstaves": [
+		"Judgement Staff",
+		"Eventuality Rod"
+	],
+	"_t2_warstaves": [
+		"Maelström Staff",
+		"Ezomyte Staff",
+		"Potentiality Rod",
+		"Capacity Rod"
+	],
+	"_t1_str_shields": [
+		"Heat-attuned Tower Shield",
+		"Colossal Tower Shield",
+		"Ezomyte Tower Shield"
+	],
+	"_t2_str_shields": [
+		"Magmatic Tower Shield",
+		"Exothermic Tower Shield",
+		"Pinnacle Tower Shield"
+	],
+	"_t1_strdex_shields": [
+		"Cardinal Round Shield"
+	],
+	"_t2_strdex_shields": [
+		"Elegant Round Shield",
+		"Spiny Round Shield"
+	],
+	"_t1_dex_shields": [
+		"Cold-attuned Buckler",
+		"Imperial Buckler"
+	],
+	"_t2_dex_shields": [
+		"Polar Buckler",
+		"Endothermic Buckler",
+		"Crusader Buckler"
+	],
+	"_t1_dexint_shields": [
+		"Supreme Spiked Shield"
+	],
+	"_t2_dexint_shields": [
+		"Mirrored Spiked Shield",
+		"Ezomyte Spiked Shield"
+	],
+	"_t1_int_shields": [
+		"Transfer-attuned Spirit Shield",
+		"Titanium Spirit Shield",
+		"Fossilised Spirit Shield"
+	],
+	"_t2_int_shields": [
+		"Subsuming Spirit Shield",
+		"Exhausting Spirit Shield",
+		"Harmonic Spirit Shield"
+	],
+	"_t1_intstr_shields": [
+		"Archon Kite Shield",
+		"Champion Kite Shield"
+	],
+	"_t2_intstr_shields": [
+		"Mosaic Kite Shield"
+	]
+}

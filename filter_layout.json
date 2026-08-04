@@ -1,0 +1,1943 @@
+{
+	"strictness": 0,
+	"global_label_overrides": {
+	},
+	"conditions": {
+		
+	},
+	"macros": [],
+	"string_collections": {
+		
+	},
+	"labels": {
+		"leveling_item": {
+			"border": "#000FF0FF"
+		},
+		"good_leveling_item": {
+			"border": "#000FF0FF",
+			"effect": "grey",
+			"icon": {
+				"size": "small",
+				"shape": "triangle",
+				"colour": "white"
+			}
+		},
+		"leveling_flask": {
+			"border": "#000FF0FF"
+		},
+		"valuable_gem": {
+			"border": "#00B400FF",
+			"text": "#00B400FF"
+		},
+		"good_cluster": {
+			"text": "187 187 187 255",
+			"border": "187 187 187 255",
+			"effect": "grey"
+		},
+		"breach_label": {
+			"text": "208 32 144 255",
+			"border": "208 32 144 255"
+		},
+		"delirium_label": {
+			"text": "187 187 187 255",
+			"border": "187 187 187 255"
+		},
+		"legion_label": {
+			"text": "172 49 206 255",
+			"border": "172 49 206 255"
+		},
+		"currency_label": {
+			"text": "249 150 25 255",
+			"border": "249 150 25 255"
+		}
+	},
+	"icons": {},
+	"filter": [
+		{
+			"category": "Leveling",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": [
+								"Small Life Flask",
+								"Small Mana Flask"
+							],
+							"area_level": "< 12"
+						},
+						{
+							"exact_base_type": [
+								"Medium Life Flask",
+								"Medium Mana Flask"
+							],
+							"area_level": "< 15"
+						},
+						{
+							"exact_base_type": [
+								"Large Life Flask",
+								"Large Mana Flask"
+							],
+							"area_level": "< 18"
+						},
+						{
+							"exact_base_type": [
+								"Greater Life Flask",
+								"Greater Mana Flask"
+							],
+							"area_level": "< 24"
+						},
+						{
+							"exact_base_type": [
+								"Grand Life Flask",
+								"Grand Mana Flask"
+							],
+							"area_level": "< 30"
+						},
+						{
+							"exact_base_type": [
+								"Giant Life Flask",
+								"Giant Mana Flask"
+							],
+							"area_level": "< 36"
+						},
+						{
+							"exact_base_type": [
+								"Colossal Life Flask",
+								"Colossal Mana Flask"
+							],
+							"area_level": "< 42"
+						},
+						{
+							"exact_base_type": [
+								"Sacred Life Flask",
+								"Sacred Mana Flask"
+							],
+							"area_level": "< 48"
+						},
+						{
+							"exact_base_type": [
+								"Hallowed Life Flask",
+								"Hallowed Mana Flask"
+							],
+							"area_level": "< 54"
+						},
+						{
+							"exact_base_type": [
+								"Sanctified Life Flask",
+								"Sanctified Mana Flask"
+							],
+							"area_level": "< 62"
+						}
+					],
+					"label": "leveling_flask"
+				},
+				{
+					"exact_class": [
+						"Boots"
+					],
+					"area_level": "< 30",
+					"rarity": [
+						"magic"
+					],
+					"label": "leveling_item",
+					"icon": {
+						"size": "small",
+						"shape": "triangle",
+						"colour": "white"
+					}
+				},
+				{
+					"area_level": "< 50",
+					"linked_sockets": 4.0,
+					"label": "good_leveling_item",
+					"icon": {
+						"size": "small",
+						"shape": "triangle",
+						"colour": "white"
+					}
+				},
+				{
+					"area_level": "< 30",
+					"rarity": "magic",
+					"linked_sockets": 3.0,
+					"label": "leveling_item",
+					"icon": {
+						"size": "small",
+						"shape": "triangle",
+						"colour": "white"
+					}
+				},
+				{
+					"area_level": "< 10",
+					"exact_class": "_all_item_classes",
+					"rarity": [
+						"normal"
+					]
+				},
+				{
+					"area_level": "< 30",
+					"exact_class": "_all_item_classes",
+					"rarity": [
+						"magic"
+					]
+				},
+				{
+					"hide": true,
+					"rarity": [
+						"normal",
+						"magic"
+					],
+					"exact_class": "_all_item_classes",
+					"area_level": "< 68"
+				}
+			]
+		},
+		{
+			"category": "General Rules",
+			"rules": [
+				{
+					"linked_sockets": 6.0,
+					"label": {
+						"text": "#FF0000FF",
+						"border": "#FF0000FF",
+						"effect": "red"
+					},
+					"icon": {
+						"colour": "red",
+						"shape": "star",
+						"size": "large"
+					}
+				},
+				{
+					"linked_sockets": 5.0,
+					"effect": "red",
+					"label": {
+						"text": "#000000FF",
+						"border": "#000000FF",
+						"background": "120 0 120 255"
+					},
+					"icon": {
+						"colour": "red",
+						"shape": "star",
+						"size": "small"
+					}
+				},
+				{
+					"sockets": 6.0,
+					"rarity": [
+						"normal",
+						"magic",
+						"rare"
+					],
+					"on_condition": [
+						"ssf"
+					],
+					"label": {
+						"text": "#797572FF",
+						"border": "#797572FF"
+					}
+				},
+				{
+					"socket_group": "RGB",
+					"label": {
+						"text": "#D0C0C0FF",
+						"border": "#C8C8C8FF",
+						"background": "#77219FFF"
+					},
+					"icon": {
+						"colour": "purple",
+						"shape": "triangle",
+						"size": "small"
+					}
+				},
+				{
+					"exact_class": [
+						"Skill Gems",
+						"Support Gems"
+					],
+					"group": [
+						{
+							"exact_base_type": "_awakened_gems"
+						},
+						{
+							"exact_base_type": "_giga_support_gems"
+						},
+						{
+							"exact_base_type": [
+								"Empower Support",
+								"Enlighten Support",
+								"Enhance Support"
+							]
+						},
+						{
+							"gem_level": 21.0
+						},
+						{
+							"quality>=": 0.0
+						},
+						{
+							"transfigured_gem": true
+						}
+					],
+					"label": "valuable_gem"
+				},
+				{
+					"hide": true,
+					"exact_class": [
+						"Skill Gems",
+						"Support Gems"
+					],
+					"area_level": ">= 38"
+				}
+			]
+		},
+		{
+			"category": "Scrolls",
+			"rules": [
+				{
+					"hide": true,
+					"exact_base_type": [
+						"Scroll Fragment"
+					]
+				},
+				{
+					"hide": true,
+					"exact_base_type": [
+						"Portal Scroll",
+						"Scroll of Wisdom"
+					],
+					"group": [
+						{
+							"stack_size": 1,
+							"area_level": ">= 66"
+						},
+						{
+							"stack_size": 5,
+							"area_level": ">= 72"
+						},
+						{
+							"stack_size": 8,
+							"area_level": ">= 76"
+						},
+						{
+							"stack_size": 10,
+							"area_level": ">= 80"
+						}
+					]
+				},
+				{
+					"base_type": [
+						"Portal Scroll",
+						"Scroll of Wisdom"
+					]
+				}
+			]
+		},
+		{
+			"category": "Blight Oil",
+			"rules": [
+				{
+					"hide": true,
+					"on_condition": [
+						"trade"
+					],
+					"exact_base_type": [
+						"Amber Oil",
+						"Clear Oil",
+						"Sepia Oil",
+						"Verdant Oil"
+					],
+					"exact_class": "Stackable Currency",
+					"area_level": ">= 74"
+				},
+				{
+					"exact_class": "Stackable Currency",
+					"base_type": [
+						"Oil"
+					],
+					"label": {
+						"text": "249 150 25 255",
+						"border": "249 150 25 255",
+						"effect": "yellow"
+					},
+					"icon": {
+						"size": "small",
+						"colour": "yellow",
+						"shape": "raindrop"
+					}
+				}
+			]
+		},
+		{
+			"category": "Essences",
+			"rules": [
+				{
+					"hide": true,
+					"area_level": ">= 79",
+					"exact_class": "Stackable Currency",
+					"on_condition": [
+						"trade"
+					],
+					"base_type": [
+						"Whispering Essence of",
+						"Muttering Essence of",
+						"Weeping Essence of",
+						"Wailing Essence of"
+					]
+				},
+				{
+					"exact_class": "Stackable Currency",
+					"base_type": [
+						"Essence of"
+					],
+					"label": {
+						"text": "72 49 206 255",
+						"border": "72 49 206 255"
+					},
+					"icon": {
+						"size": "small",
+						"colour": "blue",
+						"shape": "kite"
+					}
+				}
+			]
+		},
+		{
+			"category": "Legion",
+			"rules": [
+				{
+					"exact_base_type": [
+						"Timeless Karui Splinter",
+						"Timeless Eternal Empire Splinter",
+						"Timeless Maraketh Splinter",
+						"Timeless Vaal Splinter",
+						"Timeless Templar Splinter"
+					],
+					"label": "legion_label",
+					"icon": {
+						"size": "small",
+						"colour": "purple",
+						"shape": "kite"
+					}
+				}
+			]
+		},
+		{
+			"category": "Ultimatum",
+			"rules": [
+				{
+					"base_type": "Catalyst",
+					"exact_class": "Stackable Currency",
+					"label": {
+						"text": "214 96 0 255",
+						"border": "214 96 0 255"
+					},
+					"icon": {
+						"size": "small",
+						"colour": "brown",
+						"shape": "triangle"
+					}
+				}
+			]
+		},
+		{
+			"category": "Ritual",
+			"rules": [
+				{
+					"hide": true,
+					"exact_base_type": "Ritual Splinter"
+				}
+			]
+		},
+		{
+			"category": "Delirium",
+			"rules": [
+				{
+					"exact_base_type": [
+						"Delirium Orb"
+					],
+					"icon": {
+						"size": "small",
+						"colour": "grey",
+						"shape": "circle"
+					},
+					"label": "delirium_label"
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": [
+								"Large Cluster Jewel"
+							],
+							"delirium_cluster_size": 8
+						},
+						{
+							"exact_base_type": [
+								"Medium Cluster Jewel"
+							],
+							"delirium_cluster_size": 4
+						},
+						{
+							"exact_base_type": [
+								"Small Cluster Jewel"
+							],
+							"delirium_cluster_size": 2
+						}
+					],
+					"effect": "grey",
+					"label": "good_cluster"
+				},
+				{
+					"exact_base_type": [
+						"Simulacrum Splinter",
+						"Small Cluster Jewel",
+						"Medium Cluster Jewel",
+						"Large Cluster Jewel"
+					],
+					"label": "delirium_label"
+				}
+			]
+		},
+		{
+			"category": "Breach",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_class": [
+								"Wombgifts"
+							],
+							"icon": {
+								"size": "small",
+								"colour": "purple",
+								"shape": "circle"
+							}
+						},
+						{
+							"exact_base_type": [
+								"Cryonic Ring",
+								"Enthalpic Ring",
+								"Synaptic Ring",
+								"Organic Ring",
+								"Fugitive Ring",
+								"Formless Ring"
+							],
+							"icon": {
+								"size": "small",
+								"colour": "purple",
+								"shape": "diamond"
+							}
+						},
+						{
+							"exact_base_type": [
+								"Hivebrain Gland",
+								"Traumatic Fragment",
+								"Reverent Fragment",
+								"Lonely Fragment"
+							],
+							"icon": {
+								"size": "small",
+								"colour": "purple",
+								"shape": "UpsideDownHouse"
+							}
+						}
+					],
+					"label": "breach_label"
+				}
+			]
+		},
+		{
+			"category": "Labyrinth",
+			"rules": [
+				{
+					"exact_class": [
+						"Labyrinth Items",
+						"Labyrinth Trinkets"
+					],
+					"icon": {
+						"colour": "yellow",
+						"shape": "circle",
+						"size": "small"
+					}
+				}
+			]
+		},
+		{
+			"category": "Heist",
+			"rules": [
+				{
+					"hide": true,
+					"exact_class": [
+						"Contracts",
+						"Blueprints"
+					]
+				},
+				{
+					"hide": true,
+					"on_condition": [
+						"ssf"
+					],
+					"exact_base_type": [
+						"Rogue's Marker"
+					]
+				},
+				{
+					"on_condition": [
+						"trade"
+					],
+					"exact_base_type": [
+						"Rogue's Marker"
+					]
+				}
+			]
+		},
+		{
+			"category": "Curse of the Allflame",
+			"rules": [
+				{
+					"on_condition": [
+						"patch_3.29"
+					],
+					"exact_class": "Chart"
+				}
+			]
+		},
+		{
+			"category": "Incursion",
+			"rules": [
+				{
+					"exact_class": [
+						"Incursion Item"
+					],
+					"effect": "green",
+					"icon": {
+						"colour": "green",
+						"shape": "pentagon",
+						"size": "small"
+					}
+				}
+			]
+		},
+		{
+			"category": "Betrayal",
+			"rules": [
+				{
+					"rarity": [
+						"rare"
+					],
+					"has_mod": "_leader_veiled_mod",
+					"label": {
+						"text": "163 141 109 255"
+					}
+				}
+			]
+		},
+		{
+			"category": "Expedition",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_class": [
+								"Expedition Logbooks"
+							]
+						},
+						{
+							"exact_base_type": [
+								"Burial Medallion",
+								"Exotic Coinage",
+								"Scrap Metal",
+								"Astragali"
+							]
+						}
+					],
+					"effect": "grey",
+					"label": {
+						"text": "113 113 217 255",
+						"border": "113 113 217 255"
+					},
+					"icon": {
+						"colour": "grey",
+						"shape": "diamond",
+						"size": "small"
+					}
+				}
+			]
+		},
+		{
+			"category": "Delve",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_class": [
+								"Stackable Currency"
+							],
+							"base_type": [
+								" Fossil"
+							]
+						},
+						{
+							"exact_class": [
+								"Delve Stackable Socketable Currency"
+							]
+						}
+					],
+					"effect": "yellow",
+					"label": {
+						"border": "0 0 0 255",
+						"text": "0 0 0 255",
+						"background": "249 150 25 255"
+					},
+					"icon": {
+						"colour": "yellow",
+						"shape": "kite",
+						"size": "small"
+					}
+				}
+			]
+		},
+		{
+			"category": "Currency",
+			"rules": [
+				{
+					"hide": true,
+					"exact_class": [
+						"Stackable Currency"
+					],
+					"group": [
+						{
+							"exact_base_type": "_dog_currencies",
+							"area_level": ">= 10"
+						},
+						{
+							"stack_size": 2,
+							"exact_base_type": "_common_currencies",
+							"area_level": ">= 45"
+						},
+						{
+							"stack_size": 5,
+							"exact_base_type": "_common_currencies",
+							"area_level": ">= 71"
+						},
+						{
+							"stack_size": 8,
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 77"
+						},
+						{
+							"stack_size": 2,
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 72"
+						},
+						{
+							"stack_size": 5,
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 75"
+						},
+						{
+							"stack_size": 8,
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 79"
+						},
+						{
+							"stack_size": 2,
+							"exact_base_type": "_rare_currencies",
+							"area_level": ">= 79"
+						}
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_dog_currencies"
+						},
+						{
+							"exact_base_type": "_common_currencies"
+						},
+						{
+							"exact_base_type": "_uncommon_currencies"
+						},
+						{
+							"exact_base_type": "_rare_currencies"
+						},
+						{
+							"exact_base_type": "_nice_currencies"
+						}
+					],
+					"exact_class": [
+						"Stackable Currency"
+					],
+					"label": "currency_label",
+					"effect": "yellow",
+					"icon": {
+						"colour": "yellow",
+						"shape": "circle",
+						"size": "small"
+					}
+				},
+				{
+					"exact_base_type": "_high_tier_currencies",
+					"exact_class": [
+						"Stackable Currency"
+					],
+					"label": "currency_label",
+					"icon": {
+						"colour": "yellow",
+						"shape": "star",
+						"size": "medium"
+					}
+				},
+				{
+					"exact_base_type": "_giga_tier_currencies",
+					"exact_class": [
+						"Stackable Currency"
+					],
+					"label": "currency_label",
+					"icon": {
+						"colour": "yellow",
+						"shape": "star",
+						"size": "large"
+					}
+				}
+			]
+		},
+		{
+			"category": "Maps",
+			"rules": [
+				{
+					"hide": true,
+					"exact_class": [
+						"Maps"
+					],
+					"group": [
+						{
+							"area_level": ">= 69",
+							"map_tier": 1
+						},
+						{
+							"area_level": ">= 70",
+							"map_tier": 2
+						},
+						{
+							"area_level": ">= 71",
+							"map_tier": 3
+						},
+						{
+							"area_level": ">= 72",
+							"map_tier": 4
+						},
+						{
+							"area_level": ">= 73",
+							"map_tier": 5
+						},
+						{
+							"area_level": ">= 74",
+							"map_tier": 6
+						},
+						{
+							"area_level": ">= 75",
+							"map_tier": 7
+						},
+						{
+							"area_level": ">= 76",
+							"map_tier": 8
+						},
+						{
+							"area_level": ">= 77",
+							"map_tier": 9
+						},
+						{
+							"area_level": ">= 78",
+							"map_tier": 10
+						},
+						{
+							"area_level": ">= 79",
+							"map_tier": 11
+						},
+						{
+							"area_level": ">= 80",
+							"map_tier": 12
+						},
+						{
+							"area_level": ">= 81",
+							"map_tier": 13
+						},
+						{
+							"area_level": ">= 82",
+							"map_tier": 14
+						}
+					]
+				},
+				{
+					"exact_class": [
+						"Maps"
+					],
+					"rarity": [
+						"unique"
+					],
+					"effect": "orange",
+					"label": {
+						"border": "254 110 0 255",
+						"text": "254 110 0 255"
+					},
+					"icon": {
+						"colour": "orange",
+						"shape": "cross",
+						"size": "small"
+					}
+				},
+				{
+					"exact_class": [
+						"Maps"
+					],
+					"influence": [
+						"Crusader",
+						"Hunter",
+						"Redeemer",
+						"Warlord",
+						"Shaper",
+						"Elder"
+					],
+					"label": {
+						"border": "254 110 180 255",
+						"text": "254 110 180 255"
+					},
+					"effect": "purple",
+					"icon": {
+						"colour": "purple",
+						"shape": "cross",
+						"size": "small"
+					}
+				},
+				{
+					"exact_class": [
+						"Maps"
+					],
+					"map_tier": ">= 11",
+					"label": {
+						"border": "213 6 5 255",
+						"text": "213 6 5 255"
+					},
+					"effect": "red",
+					"icon": {
+						"colour": "red",
+						"shape": "cross",
+						"size": "small"
+					}
+				},
+				{
+					"exact_class": [
+						"Maps"
+					],
+					"map_tier": ">= 6",
+					"label": {
+						"border": "223 164 18 255",
+						"text": "223 164 18 255"
+					},
+					"effect": "yellow",
+					"icon": {
+						"colour": "yellow",
+						"shape": "cross",
+						"size": "small"
+					}
+				},
+				{
+					"exact_class": [
+						"Maps"
+					],
+					"label": {
+						"border": "222 222 222 255",
+						"text": "222 222 222 255"
+					},
+					"effect": "white",
+					"icon": {
+						"colour": "white",
+						"shape": "cross",
+						"size": "small"
+					}
+				}
+			]
+		},
+		{
+			"category": "Jewels",
+			"rules": [
+				{
+					"hide": true,
+					"area_level": ">= 75",
+					"rarity": [
+						"normal",
+						"magic"
+					],
+					"exact_base_type": "_all_jewels"
+				},
+				{
+					"exact_class": [
+						"Abyss Jewels"
+					],
+					"corrupted": true,
+					"label": {
+						"background": "128 0 0 220"
+					}
+				},
+				{
+					"exact_base_type": "_all_jewels"
+				}
+			]
+		},
+		{
+			"category": "General Equipment",
+			"rules": [
+				{
+					"synthesised": true
+				},
+				{
+					"memory_strands": "> 0"
+				},
+				{
+					"rarity": [
+						"magic",
+						"rare",
+						"unique"
+					],
+					"identified": true
+				},
+				{
+					"fractured": true
+				},
+				{
+					"rarity": [
+						"rare"
+					],
+					"influence": [
+						"Crusader",
+						"Hunter",
+						"Redeemer",
+						"Warlord",
+						"Shaper",
+						"Elder"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Items",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_claws",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_claws",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_claws"
+					],
+					"exact_class": [
+						"Claws"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_daggers",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_daggers",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_daggers"
+					],
+					"exact_class": [
+						"Daggers"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_wands",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_wands",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_wands"
+					],
+					"exact_class": [
+						"Wands"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_1h_swords",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_1h_swords",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_1h_swords"
+					],
+					"exact_class": [
+						"One Hand Swords"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_thrusting_swords",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_thrusting_swords",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_thrusting_swords"
+					],
+					"exact_class": [
+						"Thrusting One Hand Swords"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_1h_axes",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_1h_axes",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_1h_axes"
+					],
+					"exact_class": [
+						"One Hand Axes"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_1h_maces",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_1h_maces",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_1h_maces"
+					],
+					"exact_class": [
+						"One Hand Maces"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_sceptres",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_sceptres",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_sceptres"
+					],
+					"exact_class": [
+						"Sceptres"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_rune_daggers",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_rune_daggers",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_rune_daggers"
+					],
+					"exact_class": [
+						"Rune Daggers"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_bows",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_bows",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_bows"
+					],
+					"exact_class": [
+						"Bows"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_staves",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_staves",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_staves"
+					],
+					"exact_class": [
+						"Staves"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_2h_swords",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_2h_swords",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_2h_swords"
+					],
+					"exact_class": [
+						"Two Hand Swords"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_2h_maces",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_2h_maces",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_2h_maces"
+					],
+					"exact_class": [
+						"Two Hand Maces"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_2h_axes",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_2h_axes",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_2h_axes"
+					],
+					"exact_class": [
+						"Two Hand Axes"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_warstaves",
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_warstaves",
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_warstaves"
+					],
+					"exact_class": [
+						"Warstaves"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": [
+								"Serrated Arrow Quiver"
+							],
+							"AreaLevel": ">= 31"
+						},
+						{
+							"exact_base_type": [
+								"Blunt Arrow Quiver"
+							],
+							"AreaLevel": ">= 61"
+						},
+						{
+							"exact_base_type": [
+								"Fire Arrow Quiver"
+							],
+							"AreaLevel": ">= 45"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"on_condition": [
+						"show_quivers"
+					],
+					"exact_class": [
+						"Quivers"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_str_shields",
+							"on_condition": [
+								"show_str_shields"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_str_shields",
+							"on_condition": [
+								"show_str_shields"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_strdex_shields",
+							"on_condition": [
+								"show_strdex_shields"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_strdex_shields",
+							"on_condition": [
+								"show_str_shields"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dex_shields",
+							"on_condition": [
+								"show_dex_shields"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dex_shields",
+							"on_condition": [
+								"show_dex_shields"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dexint_shields",
+							"on_condition": [
+								"show_dexint_shields"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dexint_shields",
+							"on_condition": [
+								"show_dexint_shields"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_int_shields",
+							"on_condition": [
+								"show_int_shields"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_int_shields",
+							"on_condition": [
+								"show_int_shields"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_intstr_shields",
+							"on_condition": [
+								"show_intstr_shields"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_intstr_shields",
+							"on_condition": [
+								"show_intstr_shields"
+							],
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Shields"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_str_gloves",
+							"on_condition": [
+								"show_str_gloves"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_str_gloves",
+							"on_condition": [
+								"show_str_gloves"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_strdex_gloves",
+							"on_condition": [
+								"show_strdex_gloves"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_strdex_gloves",
+							"on_condition": [
+								"show_str_gloves"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dex_gloves",
+							"on_condition": [
+								"show_dex_gloves"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dex_gloves",
+							"on_condition": [
+								"show_dex_gloves"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dexint_gloves",
+							"on_condition": [
+								"show_dexint_gloves"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dexint_gloves",
+							"on_condition": [
+								"show_dexint_gloves"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_int_gloves",
+							"on_condition": [
+								"show_int_gloves"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_int_gloves",
+							"on_condition": [
+								"show_int_gloves"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_intstr_gloves",
+							"on_condition": [
+								"show_intstr_gloves"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_intstr_gloves",
+							"on_condition": [
+								"show_intstr_gloves"
+							],
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Gloves"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_str_boots",
+							"on_condition": [
+								"show_str_boots"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_str_boots",
+							"on_condition": [
+								"show_str_boots"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_strdex_boots",
+							"on_condition": [
+								"show_strdex_boots"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_strdex_boots",
+							"on_condition": [
+								"show_str_boots"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dex_boots",
+							"on_condition": [
+								"show_dex_boots"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dex_boots",
+							"on_condition": [
+								"show_dex_boots"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dexint_boots",
+							"on_condition": [
+								"show_dexint_boots"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dexint_boots",
+							"on_condition": [
+								"show_dexint_boots"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_int_boots",
+							"on_condition": [
+								"show_int_boots"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_int_boots",
+							"on_condition": [
+								"show_int_boots"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_intstr_boots",
+							"on_condition": [
+								"show_intstr_boots"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_intstr_boots",
+							"on_condition": [
+								"show_intstr_boots"
+							],
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Boots"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_str_body_armours",
+							"on_condition": [
+								"show_str_body_armours"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_str_body_armours",
+							"on_condition": [
+								"show_str_body_armours"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_strdex_body_armours",
+							"on_condition": [
+								"show_strdex_body_armours"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_strdex_body_armours",
+							"on_condition": [
+								"show_str_body_armours"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dex_body_armours",
+							"on_condition": [
+								"show_dex_body_armours"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dex_body_armours",
+							"on_condition": [
+								"show_dex_body_armours"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dexint_body_armours",
+							"on_condition": [
+								"show_dexint_body_armours"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dexint_body_armours",
+							"on_condition": [
+								"show_dexint_body_armours"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_int_body_armours",
+							"on_condition": [
+								"show_int_body_armours"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_int_body_armours",
+							"on_condition": [
+								"show_int_body_armours"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_intstr_body_armours",
+							"on_condition": [
+								"show_intstr_body_armours"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_intstr_body_armours",
+							"on_condition": [
+								"show_intstr_body_armours"
+							],
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Body Armours"
+					]
+				},
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_str_helmets",
+							"on_condition": [
+								"show_str_helmets"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_str_helmets",
+							"on_condition": [
+								"show_str_helmets"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_strdex_helmets",
+							"on_condition": [
+								"show_strdex_helmets"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_strdex_helmets",
+							"on_condition": [
+								"show_str_helmets"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dex_helmets",
+							"on_condition": [
+								"show_dex_helmets"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dex_helmets",
+							"on_condition": [
+								"show_dex_helmets"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_dexint_helmets",
+							"on_condition": [
+								"show_dexint_helmets"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_dexint_helmets",
+							"on_condition": [
+								"show_dexint_helmets"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_int_helmets",
+							"on_condition": [
+								"show_int_helmets"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_int_helmets",
+							"on_condition": [
+								"show_int_helmets"
+							],
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t1_intstr_helmets",
+							"on_condition": [
+								"show_intstr_helmets"
+							],
+							"label": {
+								"border": "200 200 00 255"
+							}
+						},
+						{
+							"exact_base_type": "_t2_intstr_helmets",
+							"on_condition": [
+								"show_intstr_helmets"
+							],
+							"area_level": "< 80"
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Helmets"
+					]
+				},
+				{
+					"hide": true,
+					"exact_class": "_all_item_classes",
+					"rarity": [
+						"rare"
+					],
+					"area_level": " >= 75"
+				}
+			]
+		}
+	]
+}
