@@ -2,33 +2,87 @@
 
 [ext_resource type="Script" uid="uid://bd0sdknlei2jr" path="res://main.gd" id="1_wtcfe"]
 
-[node name="Node2D" type="Node2D" unique_id=1376592695 node_paths=PackedStringArray("m_start_button", "m_filter_label")]
+[node name="Node2D" type="Node2D" unique_id=1376592695 node_paths=PackedStringArray("m_start_button", "m_config_button", "m_config_line_edit", "m_select_output_button", "m_select_output_line_edit", "m_file_dialog", "m_output_rich_text_label")]
 script = ExtResource("1_wtcfe")
-m_start_button = NodePath("HBoxContainer/Button")
-m_filter_config_path = "res://filter_config.json"
-m_filter_label = NodePath("HBoxContainer/RichTextLabel")
+m_start_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Button")
+m_config_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/OpenConfigButton")
+m_config_line_edit = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/OpenConfigLineEdit")
+m_select_output_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3/OutputDirButton")
+m_select_output_line_edit = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3/OutputDirLineEdit")
+m_file_dialog = NodePath("FileDialog")
+m_output_rich_text_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/RichTextLabel")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1292042580]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 4.0
-offset_right = 1154.0
-offset_bottom = 649.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1646403270]
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.json")
+use_native_dialog = true
 
-[node name="Button" type="Button" parent="HBoxContainer" unique_id=49550745]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=851685634]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1292042580]
 layout_mode = 2
-text = "Do the thing"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer" unique_id=783955860]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=61417166]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "	MinimapIcon 0 Red Star
 
-Hide
-	Class == \"Skill Gems\" \"Support Gems\"
-	AreaLevel > 38
-"
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=315343719]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=24078866]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Config File"
+
+[node name="OpenConfigLineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=399475768]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "./filter_config.json"
+editable = false
+
+[node name="OpenConfigButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=167123926]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Open Config"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2004192449]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=74667044]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Output Directory"
+
+[node name="OutputDirLineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=658363656]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "."
+editable = false
+
+[node name="OutputDirButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=53889455]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select Output Directory"
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=49550745]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Do the thing"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=222259576]
+layout_mode = 2
+size_flags_vertical = 3
+scroll_following = true

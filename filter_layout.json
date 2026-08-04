@@ -615,6 +615,7 @@
 			"category": "Incursion",
 			"rules": [
 				{
+					"comment": "Stones of Passage and Flashpowder Keg",
 					"exact_class": [
 						"Incursion Item"
 					],
@@ -1000,6 +1001,7 @@
 				{
 					"group": [
 						{
+							"comment": "Remember to update what the good scarabs are in your string collections file",
 							"base_type": "_good_scarabs",
 							"label": {
 								"text": "249 150 25 255",
@@ -1092,10 +1094,25 @@
 		},
 		{
 			"category": "Normal/Magic Equipment",
+			"comment": "Once you enter maps all normal and magic items are hidden by default, the exception being things with 20+ quality.",
 			"rules": [
+				{
+					"quality": "> 20",
+					"exact_class": "_all_item_classes",
+					"rarity": [
+						"normal",
+						"magic"
+					],
+					"icon": {
+						"colour": "white",
+						"shape": "hexagon",
+						"size": "small"
+					}
+				},
 				{
 					"hide": true,
 					"area_level": ">= 68",
+					"exact_class": "_all_item_classes",
 					"rarity": [
 						"normal",
 						"magic"
@@ -1105,6 +1122,7 @@
 		},
 		{
 			"category": "Rare Equipment",
+			"comment": "Sorted by slot and then tier. T3 means all rares below the two best ones, so you will find lots of items of a class in early maps, then less and then only the highest tier once you reach T14+. T1 items has a border to make them visible when there are both T1 and other items, but when there's only T1 items the border will be hidden to reduce clutter.",
 			"rules": [
 				{
 					"group": [

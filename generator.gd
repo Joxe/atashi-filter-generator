@@ -106,8 +106,12 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 			"",
 			"# ===========================",
 			"# %s" % category["category"],
-			"# ===========================\n"
 		]
+
+		if category.has("comment"):
+			filter_category.append_array(_parse_comment(category["comment"]))
+
+		filter_category.append("# ===========================\n")
 
 		for rule : Dictionary in category["rules"]:
 			var group : Array = []
@@ -162,6 +166,9 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 						continue
 
 				var generated_rule : PackedStringArray = []
+
+				if has_key.call("comment"):
+					generated_rule.append_array(_parse_comment(get_value.call("comment")))
 
 				# ===========================
 				# Show is default, Hide if the user has specified it as true.
@@ -317,6 +324,30 @@ func _parse_colour(colour_string : String) -> Color:
 			)
 
 	return Color.PURPLE
+
+func _parse_comment(comment : String) -> PackedStringArray:
+	var return_value : PackedStringArray = []
+
+	var split_comment : PackedStringArray = comment.split(" ")
+	var char_count : int = 0
+	var line : PackedStringArray = []
+
+	for word : String in split_comment:
+		if char_count == 0:
+			line.append("#")
+
+		char_count += word.length()
+		line.append(word)
+
+		if char_count >= 100:
+			return_value.append(" ".join(line))
+			char_count = 0
+			line = []
+
+	if char_count != 0:
+		return_value.append(" ".join(line))
+
+	return return_value
 
 func _construct_icon_line(icon : Dictionary) -> String:
 	var size : String = icon.get("size", "large")
