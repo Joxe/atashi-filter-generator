@@ -80,7 +80,7 @@ text = "Select Output Directory"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Do the thing"
+text = "Generate Filters"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=222259576]
 layout_mode = 2

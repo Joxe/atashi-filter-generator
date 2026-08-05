@@ -20,7 +20,10 @@
 		"Two Hand Maces",
 		"Two Hand Swords",
 		"Wands",
-		"Warstaves"
+		"Warstaves",
+		"Amulets",
+		"Rings",
+		"Belts"
 	],
 	"_all_jewels": [
 		"Cobalt Jewel",
@@ -147,13 +150,15 @@
 		"Exalted Shard",
 		"Greater Eldritch Ichor",
 		"Greater Eldritch Ember",
-		"Crescent Splinter",
-		"Veiled Chaos Orb",
-		"Memory of Loneliness",
 		"Ancient Orb",
 		"Chromatic Orb"
 	],
 	"_giga_tier_currencies": [
+		"Veiled Chaos Orb",
+		"Grand Eldritch Ichor",
+		"Grand Eldritch Ember",
+		"Exceptional Eldritch Ichor",
+		"Exceptional Eldritch Ember",
 		"Divine Orb",
 		"Mirror of Kalandra",
 		"Mirror Shard",
@@ -162,7 +167,19 @@
 		"Awakener's Orb",
 		"Fracturing Orb",
 		"Orb of Annulment",
-		"Valdo's Puzzle Box"
+		"Valdo's Puzzle Box",
+		"Shaper's Exalted Orb",
+		"Elder's Exalted Orb",
+		"Crusader's Exalted Orb",
+		"Redeemer's Exalted Orb",
+		"Warlord's Exalted Orb",
+		"Awakener's Orb",
+		"Orb of Dominance",
+		"Eldritch Chaos Orb",
+		"Eldritch Exalted Orb",
+		"Eldritch Orb of Annulment",
+		"Crescent Splinter",
+		"Memory of Loneliness"
 	],
 	"_leader_veiled_mods": [
 		"Catarina's Veiled",

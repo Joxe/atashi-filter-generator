@@ -18,7 +18,8 @@ const INTEGER_VALUES : Array[String] = [
 	"stack_size",
 	"area_level",
 	"gem_level",
-	"quality"
+	"quality",
+	"item_level"
 ]
 
 var m_strictness : int = 0
@@ -27,7 +28,7 @@ var m_string_collections : Dictionary[StringName, PackedStringArray] = {}
 var m_macros : Dictionary[StringName, String] = {}
 var m_conditions : Dictionary[StringName, bool] = {}
 var m_formatted_labels : Dictionary[StringName, PackedStringArray] = {}
-var m_formatted_icons : Dictionary[StringName, PackedStringArray] = {}
+var m_formatted_icons : Dictionary[StringName, String] = {}
 var m_constructed_filter : Array[PackedStringArray] = []
 
 func get_constructed_filter() -> Array[PackedStringArray]:
@@ -45,15 +46,8 @@ func generate_filter(layout : Dictionary) -> void:
 	for label_override_key : StringName in layout.get("global_label_overrides", {}).keys():
 		m_global_label_overrides[label_override_key] = layout.get("global_label_overrides", {})[label_override_key]
 
-	for macro : Dictionary in layout.get("macros"):
-		var id : StringName = macro["id"]
-		var text : String = macro["text"]
-
-		if id.begins_with("_") == false:
-			printerr("'%s' is not a valid macro ID, they must all start with an underscore!" % id)
-			continue
-
-		m_macros[id] = text
+	for macro_key : StringName in layout.get("macros", {}).keys():
+		m_macros[macro_key] = layout.get("macros", {})[macro_key]
 
 	for string_collection_key : StringName in layout.get("string_collections", {}).keys():
 		var string_collection : PackedStringArray = []
@@ -71,22 +65,27 @@ func generate_filter(layout : Dictionary) -> void:
 		m_formatted_labels[label_key] = generated_label
 
 	for icon_key : StringName in layout.get("icons", {}).keys():
-		var generated_icon : PackedStringArray = _construct_label(layout.get("icons")[icon_key])
-		m_formatted_icons[icon_key] = generated_icon
+		m_formatted_icons[icon_key] = _construct_icon_line(layout.get("icons")[icon_key])
 
-	m_constructed_filter = _construct_filter(layout["filter"])
+	m_constructed_filter = _construct_filter(layout["layout"])
 
 func _construct_label(style : Dictionary) -> PackedStringArray:
 	var label_strings : PackedStringArray = []
 
+	if m_global_label_overrides.has("border"):
+		label_strings.append("\tSetBorderColor %s" % _layout_to_filter_colour(m_global_label_overrides["border"]))
 	if style.has("border"):
-		label_strings.append("\tSetBorderColor %s" % _schema_to_filter_colour(style["border"]))
+		label_strings.append("\tSetBorderColor %s" % _layout_to_filter_colour(style["border"]))
 
+	if m_global_label_overrides.has("text"):
+		label_strings.append("\tSetTextColor %s" % _layout_to_filter_colour(m_global_label_overrides["text"]))
 	if style.has("text"):
-		label_strings.append("\tSetTextColor %s" % _schema_to_filter_colour(style["text"]))
+		label_strings.append("\tSetTextColor %s" % _layout_to_filter_colour(style["text"]))
 
+	if m_global_label_overrides.has("background"):
+		label_strings.append("\tSetBackgroundColor %s" % _layout_to_filter_colour(m_global_label_overrides["background"]))
 	if style.has("background"):
-		label_strings.append("\tSetBackgroundColor %s" % _schema_to_filter_colour(style["background"]))
+		label_strings.append("\tSetBackgroundColor %s" % _layout_to_filter_colour(style["background"]))
 
 	if m_global_label_overrides.has("font_size"):
 		label_strings.append("\tSetFontSize %d" % m_global_label_overrides["font_size"])
@@ -184,25 +183,17 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				# Base Type
 				# ===========================
 				if has_key.call("base_type"):
-					generated_rule.append(_construct_base_type_line(get_value.call("base_type"), false))
+					generated_rule.append(_construct_line("base_type", get_value.call("base_type"), false))
 				elif has_key.call("exact_base_type"):
-					generated_rule.append(_construct_base_type_line(get_value.call("exact_base_type"), true))
+					generated_rule.append(_construct_line("base_type", get_value.call("exact_base_type"), true))
 
 				# ===========================
 				# Checks item class
 				# ===========================
 				if has_key.call("class"):
-					generated_rule.append(_construct_class_line(get_value.call("class"), false))
+					generated_rule.append(_construct_line("class", get_value.call("class"), false))
 				elif has_key.call("exact_class"):
-					generated_rule.append(_construct_class_line(get_value.call("exact_class"), true))
-
-				# ===========================
-				# Area Level
-				# ===========================
-				if has_key.call("until_level"):
-					generated_rule.append("\tAreaLevel < %d" % get_value.call("until_level"))
-				elif has_key.call("after_level"):
-					generated_rule.append("\tAreaLevel > %d" % get_value.call("after_level"))
+					generated_rule.append(_construct_line("class", get_value.call("exact_class"), true))
 
 				# ===========================
 				# Rarity
@@ -247,7 +238,7 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				for boolean_value : String in BOOLEAN_VALUES:
 					if has_key.call(boolean_value):
 						var is_set : bool = get_value.call(boolean_value)
-						var filter_name : String = _schema_to_filter_name(boolean_value)
+						var filter_name : String = _layout_to_filter_name(boolean_value)
 
 						if is_set:
 							generated_rule.append("\t%s True" % filter_name)
@@ -257,7 +248,7 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				for integer_value : String in INTEGER_VALUES:
 					if has_key.call(integer_value):
 						var integer_value_variant : Variant = get_value.call(integer_value)
-						var filter_name : String = _schema_to_filter_name(integer_value)
+						var filter_name : String = _layout_to_filter_name(integer_value)
 
 						if typeof(integer_value_variant) == TYPE_INT:
 							var value : int = integer_value_variant
@@ -273,9 +264,9 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				# Mod check
 				# ===========================
 				if has_key.call("has_mod"):
-					generated_rule.append(_construct_has_mod_line(get_value.call("has_mod"), false))
+					generated_rule.append(_construct_line("has_mod", get_value.call("has_mod"), false))
 				elif has_key.call("exact_has_mod"):
-					generated_rule.append(_construct_has_mod_line(get_value.call("exact_has_mod"), true))
+					generated_rule.append(_construct_line("has_mod", get_value.call("exact_has_mod"), true))
 
 				# ===========================
 				# Label
@@ -349,115 +340,68 @@ func _parse_comment(comment : String) -> PackedStringArray:
 
 	return return_value
 
-func _construct_icon_line(icon : Dictionary) -> String:
-	var size : String = icon.get("size", "large")
-	var shape : String = icon.get("shape", "circle")
-	var colour : String = icon.get("colour", "purple")
+func _construct_icon_line(icon : Variant) -> String:
+	if typeof(icon) == TYPE_STRING:
+		return m_formatted_icons[icon]
+	else:
+		var size : String = icon.get("size", "large")
+		var shape : String = icon.get("shape", "circle")
+		var colour : String = icon.get("colour", "purple")
 
-	var size_int : int = 0
+		var size_int : int = 0
 
-	match size:
-		"large":
-			size_int = 0
-		"medium":
-			size_int = 1
-		"small":
-			size_int = 2
+		match size:
+			"large":
+				size_int = 0
+			"medium":
+				size_int = 1
+			"small":
+				size_int = 2
 
-	return "\tMinimapIcon %d %s %s" % [
-		size_int,
-		colour.to_pascal_case(),
-		shape.to_pascal_case()
-	]
+		return "\tMinimapIcon %d %s %s" % [
+			size_int,
+			colour.to_pascal_case(),
+			shape.to_pascal_case()
+		]
 
-func _construct_base_type_line(base_type : Variant, exact : bool) -> String:
-	if typeof(base_type) == TYPE_ARRAY:
-		var base_type_string : PackedStringArray = []
+func _construct_line(layout_key : String, layout_value : Variant, exact : bool) -> String:
+	var filter_key : String = _layout_to_filter_name(layout_key)
 
-		for type : String in base_type:
-			base_type_string.append("\"%s\"" % type)
+	if typeof(layout_value) == TYPE_ARRAY:
+		var filter_string : PackedStringArray = []
+
+		for type : String in layout_value:
+			filter_string.append("\"%s\"" % type)
 
 		if exact:
-			return "\tBaseType == %s" % " ".join(base_type_string)
+			return "\t%s == %s" % [
+				filter_key,
+				" ".join(filter_string)
+			]
 		else:
-			return "\tBaseType %s" % " ".join(base_type_string)
-	elif typeof(base_type) == TYPE_STRING:
+			return "\t%s %s" % [
+				filter_key,
+				" ".join(filter_string)
+			]
+	elif typeof(layout_value) == TYPE_STRING:
 		var line_start : String = ""
 
 		if exact:
-			line_start = "\tBaseType =="
+			line_start = "\t%s ==" % filter_key
 		else:
-			line_start = "\tBaseType"
+			line_start = "\t%s" % filter_key
 
-		if base_type.begins_with("_"):
-			if m_string_collections.has(base_type):
-				return "%s %s" % [ line_start, " ".join(m_string_collections[base_type]) ]
+		if layout_value.begins_with("_"):
+			if m_string_collections.has(layout_value):
+				return "%s %s" % [ line_start, " ".join(m_string_collections[layout_value]) ]
 			else:
-				return "%s %s" % [ line_start, m_macros[base_type] ]
+				return "%s %s" % [ line_start, m_macros[layout_value] ]
 		else:
-			return "%s \"%s\"" % [ line_start, base_type ]
+			return "%s \"%s\"" % [ line_start, layout_value ]
 
 	return ""
 
-func _construct_class_line(class_info : Variant, exact : bool) -> String:
-	if typeof(class_info) == TYPE_ARRAY:
-		var base_type_string : PackedStringArray = []
-
-		for type : String in class_info:
-			base_type_string.append("\"%s\"" % type)
-
-		if exact:
-			return "\tClass == %s" % " ".join(base_type_string)
-		else:
-			return "\tClass %s" % " ".join(base_type_string)
-	elif typeof(class_info) == TYPE_STRING:
-		var line_start : String = ""
-
-		if exact:
-			line_start = "\tClass =="
-		else:
-			line_start = "\tClass"
-
-		if class_info.begins_with("_"):
-			if m_string_collections.has(class_info):
-				return "%s %s" % [ line_start, " ".join(m_string_collections[class_info]) ]
-			else:
-				return "%s %s" % [ line_start, m_macros[class_info] ]
-		else:
-			return "%s \"%s\"" % [ line_start, class_info ]
-
-	return ""
-
-func _construct_has_mod_line(mod_info : Variant, exact : bool) -> String:
-	if typeof(mod_info) == TYPE_ARRAY:
-		var base_type_string : PackedStringArray = []
-
-		for type : String in mod_info:
-			base_type_string.append("\"%s\"" % type)
-
-		if exact:
-			return "\tHasExplicitMod == %s" % " ".join(base_type_string)
-		else:
-			return "\tHasExplicitMod %s" % " ".join(base_type_string)
-	elif typeof(mod_info) == TYPE_STRING:
-		var line_start : String = ""
-
-		if exact:
-			line_start = "\tHasExplicitMod =="
-		else:
-			line_start = "\tHasExplicitMod"
-
-		if mod_info.begins_with("_"):
-			if m_string_collections.has(mod_info):
-				return "%s %s" % [ line_start, " ".join(m_string_collections[mod_info]) ]
-			else:
-				return "%s %s" % [ line_start, m_macros[mod_info] ]
-		else:
-			return "%s \"%s\"" % [ line_start, mod_info ]
-
-	return ""
-
-func _schema_to_filter_colour(schema_colour : String) -> String:
+func _layout_to_filter_colour(schema_colour : String) -> String:
 	var colour : Color = _parse_colour(schema_colour)
 
 	return "%d %d %d %d" % [
@@ -467,8 +411,14 @@ func _schema_to_filter_colour(schema_colour : String) -> String:
 		colour.a * 255
 	]
 
-func _schema_to_filter_name(in_name : String) -> String:
+func _layout_to_filter_name(in_name : String) -> String:
 	match in_name:
+		"base_type":
+			return "BaseType"
+		"class":
+			return "Class"
+		"has_mod":
+			return "HasExplicitMod"
 		"corrupted":
 			return "Corrupted"
 		"synthesised":
@@ -497,6 +447,7 @@ func _schema_to_filter_name(in_name : String) -> String:
 			return "Quality"
 		"transfigured":
 			return "TransfiguredGem"
+		"item_level":
+			return "ItemLevel"
 		_:
-			printerr("Could not translate schema name '%s'!" % in_name)
-			return ""
+			return in_name

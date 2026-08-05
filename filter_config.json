@@ -42,6 +42,10 @@
 					"ruthless": true
 				}
 			}
+		},
+		{
+			"name": "test",
+			"layout": "./test_layout.json"
 		}
 	],
 	"global_config": {
