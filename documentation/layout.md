@@ -2,11 +2,60 @@
 
 ## `strictness`
 
-Not yet implemented, but the idea is that the config will set this so rules can react to it.
+Strictness can be set in either layout or (preferably) in the config of a filter. The strictness will disable all rules when the set strictness of a rule is *less or equal* the strictness of a layout. As an example we will use the layout rule and show both outcomes.
+
 ```json
 {
-	"strictness": 0,
+	"group": [
+		{
+			"exact_base_type": [
+				"Assassin Bow",
+				"Thicket Bow",
+				"Spine Bow"
+			],
+			"label": {
+				"border": "200 200 00 255"
+			}
+		},
+		{
+			"exact_base_type": [
+				"Citadel Bow",
+				"Ranger Bow",
+				"Steelwood Bow"
+			],
+			"area_level": "< 80",
+			"strictness": 0
+		}
+	],
+	"rarity": [
+		"rare"
+	],
+	"exact_class": [
+		"Bows"
+	]
 }
+```
+With `strictness` set to 0 we get
+```
+Show
+	BaseType == "Assassin Bow" "Thicket Bow" "Spine Bow"
+	Class == "Bows"
+	Rarity == "Rare"
+	SetBorderColor 200 200 0 255
+
+Show
+	BaseType == "Citadel Bow" "Ranger Bow" "Steelwood Bow"
+	Class == "Bows"
+	Rarity == "Rare"
+	AreaLevel < 80
+```
+With `strictness` set to 1 we get
+```
+Show
+	BaseType == "Assassin Bow" "Thicket Bow" "Spine Bow" 
+	Class == "Bows"
+	Rarity == "Rare"
+	SetBorderColor 200 200 0 255
 ```
 
 ## `global_label_overrides`

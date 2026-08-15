@@ -121,13 +121,10 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				group.append(rule)
 
 			for group_entry : Dictionary in group:
+				# Generate check and get functions for this group. The idea is that they first check the group and if
+				# they don't find what they are looking for they go up the chain to the rule.
 				var has_key : Callable = func(key : String) -> bool:
-					if group_entry.has(key):
-						return true
-					elif rule.has(key):
-						return true
-
-					return false
+					return group_entry.has(key) || rule.has(key)
 
 				var get_value : Callable = func(key : String) -> Variant:
 					if group_entry.has(key):
@@ -138,30 +135,35 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 					return null
 
 				# Rules without a condition are always added.
-				if has_key.call("any_condition"):
-					var is_enabled : bool = false
+				var is_enabled : bool = false
 
+				if has_key.call("any_condition"):
 					# Any true condition is enough.
 					var conditions : Dictionary = get_value.call("any_condition")
 					for condition : String in conditions.keys():
 						if m_conditions.get(condition, false) == conditions[condition]:
 							is_enabled = true
 							break
-
-					if is_enabled == false:
-						continue
-
-				if has_key.call("all_conditions"):
-					var is_enabled : bool = true
-
-					# We need each condition to match.
+				elif has_key.call("all_conditions"):
+					# We need each condition to match. Set enabled to true and then toggle it to false if any condition fails.
+					is_enabled = true
 					var conditions : Dictionary = get_value.call("all_conditions")
 					for condition : String in conditions.keys():
 						if m_conditions.get(condition, false) != conditions[condition]:
 							is_enabled = false
 							break
+				else:
+					is_enabled = true
 
-					if is_enabled == false:
+				# Check if the conditions enabled or disabled this group entry.
+				if is_enabled == false:
+					continue
+
+				# Strictness is a special condition that makes a lot of sense to PoE players, a stricter filter generally 
+				# has more things hidden.
+				if has_key.call("strictness"):
+					var strictness : int = get_value.call("strictness")
+					if strictness < m_strictness:
 						continue
 
 				var generated_rule : PackedStringArray = []

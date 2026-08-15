@@ -58,73 +58,75 @@
 								"Small Life Flask",
 								"Small Mana Flask"
 							],
-							"area_level": "< 12"
+							"area_level": "> 12"
 						},
 						{
 							"exact_base_type": [
 								"Medium Life Flask",
 								"Medium Mana Flask"
 							],
-							"area_level": "< 15"
+							"area_level": "> 15"
 						},
 						{
 							"exact_base_type": [
 								"Large Life Flask",
 								"Large Mana Flask"
 							],
-							"area_level": "< 18"
+							"area_level": "> 18"
 						},
 						{
 							"exact_base_type": [
 								"Greater Life Flask",
 								"Greater Mana Flask"
 							],
-							"area_level": "< 24"
+							"area_level": "> 24"
 						},
 						{
 							"exact_base_type": [
 								"Grand Life Flask",
 								"Grand Mana Flask"
 							],
-							"area_level": "< 30"
+							"area_level": "> 30"
 						},
 						{
 							"exact_base_type": [
 								"Giant Life Flask",
 								"Giant Mana Flask"
 							],
-							"area_level": "< 36"
+							"area_level": "> 36"
 						},
 						{
 							"exact_base_type": [
 								"Colossal Life Flask",
 								"Colossal Mana Flask"
 							],
-							"area_level": "< 42"
+							"area_level": "> 42"
 						},
 						{
 							"exact_base_type": [
 								"Sacred Life Flask",
 								"Sacred Mana Flask"
 							],
-							"area_level": "< 48"
+							"area_level": "> 48"
 						},
 						{
 							"exact_base_type": [
 								"Hallowed Life Flask",
 								"Hallowed Mana Flask"
 							],
-							"area_level": "< 54"
+							"area_level": "> 54"
 						},
 						{
 							"exact_base_type": [
 								"Sanctified Life Flask",
 								"Sanctified Mana Flask"
 							],
-							"area_level": "< 62"
+							"area_level": "> 62"
 						}
 					],
-					"label": "leveling_flask"
+					"hide": true,
+					"label": "leveling_flask",
+					"quality": 0
 				},
 				{
 					"exact_class": [
@@ -277,12 +279,19 @@
 					"label": "valuable_gem"
 				},
 				{
-					"hide": true,
+					"group": [
+						{
+							"hide": true,
+							"area_level": ">= 38",
+							"any_condition": {
+								"ruthless": false
+							}
+						}
+					],
 					"exact_class": [
 						"Skill Gems",
 						"Support Gems"
-					],
-					"area_level": ">= 38"
+					]
 				}
 			]
 		},
@@ -293,7 +302,20 @@
 					"group": [
 						{
 							"hide": false,
-							"item_level": "> 83"
+							"item_level": "> 84",
+							"exact_class": [
+								"Utility Flasks"
+							]
+						},
+						{
+							"hide": false,
+							"quality": ">= 20",
+							"effect": "grey",
+							"icon": {
+								"colour": "white",
+								"shape": "diamond",
+								"size": "small"
+							}
 						},
 						{
 							"hide": false,
@@ -336,6 +358,9 @@
 							"exact_class": [
 								"Utility Flasks"
 							]
+						},
+						{
+							"hide": true
 						}
 					],
 					"hide": true,
@@ -468,12 +493,40 @@
 			"category": "Legion",
 			"rules": [
 				{
-					"exact_base_type": [
-						"Timeless Karui Splinter",
-						"Timeless Eternal Empire Splinter",
-						"Timeless Maraketh Splinter",
-						"Timeless Vaal Splinter",
-						"Timeless Templar Splinter"
+					"group": [
+						{
+							"base_type": [
+								"Enshrouding Crystal"
+							],
+							"icon": {
+								"size": "large",
+								"colour": "purple",
+								"shape": "kite"
+							}
+						},
+						{
+							"exact_base_type": [
+								"Timeless Karui Splinter",
+								"Timeless Eternal Empire Splinter",
+								"Timeless Maraketh Splinter",
+								"Timeless Vaal Splinter",
+								"Timeless Templar Splinter"
+							]
+						},
+						{
+							"exact_base_type": [
+								"Timeless Karui Emblem",
+								"Timeless Eternal Emblem",
+								"Timeless Maraketh Emblem",
+								"Timeless Vaal Emblem",
+								"Timeless Templar Emblem"
+							],
+							"icon": {
+								"size": "medium",
+								"colour": "purple",
+								"shape": "kite"
+							}
+						}
 					],
 					"label": "legion_label",
 					"icon": {
@@ -694,7 +747,8 @@
 						"The Changeling's Ducat",
 						"Telesia's Ducat",
 						"Tzamoto's Ducat",
-						"Ukatoa's Ducat"
+						"Ukatoa's Ducat",
+						"Dead Man's Sulphur"
 					],
 					"label": "currency_label",
 					"icon": {
@@ -805,6 +859,7 @@
 			"category": "Currency",
 			"rules": [
 				{
+					"strictness": 0,
 					"hide": true,
 					"exact_class": [
 						"Stackable Currency"
@@ -815,7 +870,10 @@
 					"group": [
 						{
 							"exact_base_type": "_dog_currencies",
-							"area_level": ">= 10"
+							"area_level": ">= 10",
+							"any_condition":{
+								"ruthless": false
+							}
 						},
 						{
 							"stack_size": 1,
@@ -828,9 +886,12 @@
 							"area_level": ">= 71"
 						},
 						{
-							"stack_size": "< 8",
-							"exact_base_type": "_uncommon_currencies",
-							"area_level": ">= 77"
+							"stack_size": "< 10",
+							"exact_base_type": "_common_currencies",
+							"area_level": ">= 75",
+							"any_condition": {
+								"ssf": false
+							}
 						},
 						{
 							"stack_size": 1,
@@ -855,20 +916,82 @@
 					]
 				},
 				{
+					"strictness": 1,
+					"hide": true,
+					"exact_class": [
+						"Stackable Currency"
+					],
+					"any_condition": {
+						"ruthless": false
+					},
 					"group": [
 						{
+							"exact_base_type": "_dog_currencies",
+							"area_level": ">= 10",
+							"any_condition":{
+								"ruthless": false
+							}
+						},
+						{
+							"stack_size": 1,
+							"exact_base_type": "_common_currencies",
+							"area_level": ">= 45"
+						},
+						{
+							"stack_size": "< 5",
+							"exact_base_type": "_common_currencies",
+							"area_level": ">= 71"
+						},
+						{
+							"stack_size": "< 10",
+							"exact_base_type": "_common_currencies",
+							"area_level": ">= 75",
+							"any_condition": {
+								"ssf": false
+							}
+						},
+						{
+							"stack_size": "< 3",
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 72"
+						},
+						{
+							"stack_size": "< 6",
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 75"
+						},
+						{
+							"stack_size": "< 8",
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 79"
+						},
+						{
+							"stack_size": "< 3",
+							"exact_base_type": "_rare_currencies",
+							"area_level": ">= 79"
+						}
+					]
+				},
+				{
+					"group": [
+						{
+							"comment": "Bad currency, oftentimes hidden by rules above",
 							"exact_base_type": "_dog_currencies"
 						},
 						{
+							"comment": "Common currencies",
 							"exact_base_type": "_common_currencies"
 						},
 						{
+							"comment": "Uncommon currencies",
 							"exact_base_type": "_uncommon_currencies"
 						},
 						{
+							"comment": "Rare currencies",
 							"exact_base_type": "_rare_currencies"
 						},
 						{
+							"comment": "Nice currencies, probably never hidden",
 							"exact_base_type": "_nice_currencies"
 						}
 					],
@@ -884,6 +1007,7 @@
 					}
 				},
 				{
+					"comment": "High-tier currencies",
 					"exact_base_type": "_high_tier_currencies",
 					"exact_class": [
 						"Stackable Currency"
@@ -896,6 +1020,7 @@
 					}
 				},
 				{
+					"comment": "Giga-tier currencies",
 					"exact_base_type": "_giga_tier_currencies",
 					"exact_class": [
 						"Stackable Currency"
@@ -911,8 +1036,34 @@
 		},
 		{
 			"category": "Gold",
+			"comment": "Gold is automatically picked up so we only care to show larger gold piles, basically those you'd turn back to pick up.",
 			"rules": [
 				{
+					"any_condition": {
+						"ruthless": false
+					},
+					"group": [
+						{
+							"hide": true,
+							"stack_size": "< 200"
+						},
+						{
+							"hide": true,
+							"stack_size": "< 300",
+							"area_level": ">= 83"
+						},
+						{
+							"hide": false
+						}
+					],
+					"exact_base_type": [
+						"Gold"
+					]
+				},
+				{
+					"any_condition": {
+						"ruthless": true
+					},
 					"group": [
 						{
 							"hide": true,
@@ -1238,7 +1389,7 @@
 					"hide": true,
 					"area_level": ">= 68",
 					"exact_class": "_all_item_classes",
-					"quality": "< 20",
+					"quality": "<= 20",
 					"memory_strands": 0,
 					"synthesised": false,
 					"fractured": false,
@@ -1263,7 +1414,8 @@
 						},
 						{
 							"exact_base_type": "_t2_claws",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1286,7 +1438,8 @@
 						},
 						{
 							"exact_base_type": "_t2_daggers",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1309,7 +1462,8 @@
 						},
 						{
 							"exact_base_type": "_t2_wands",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1332,7 +1486,8 @@
 						},
 						{
 							"exact_base_type": "_t2_1h_swords",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1355,7 +1510,8 @@
 						},
 						{
 							"exact_base_type": "_t2_thrusting_swords",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1378,7 +1534,8 @@
 						},
 						{
 							"exact_base_type": "_t2_1h_axes",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1401,7 +1558,8 @@
 						},
 						{
 							"exact_base_type": "_t2_1h_maces",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1424,7 +1582,8 @@
 						},
 						{
 							"exact_base_type": "_t2_sceptres",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1447,7 +1606,8 @@
 						},
 						{
 							"exact_base_type": "_t2_rune_daggers",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1470,7 +1630,8 @@
 						},
 						{
 							"exact_base_type": "_t2_bows",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1493,7 +1654,8 @@
 						},
 						{
 							"exact_base_type": "_t2_staves",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1516,7 +1678,8 @@
 						},
 						{
 							"exact_base_type": "_t2_2h_swords",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1539,7 +1702,8 @@
 						},
 						{
 							"exact_base_type": "_t2_2h_maces",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1562,7 +1726,8 @@
 						},
 						{
 							"exact_base_type": "_t2_2h_axes",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1585,7 +1750,8 @@
 						},
 						{
 							"exact_base_type": "_t2_warstaves",
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1645,7 +1811,8 @@
 							"any_condition": {
 								"hide_str_shields": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_strdex_shields",
@@ -1661,7 +1828,8 @@
 							"any_condition": {
 								"hide_str_shields": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dex_shields",
@@ -1677,7 +1845,8 @@
 							"any_condition": {
 								"hide_dex_shields": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dexint_shields",
@@ -1693,7 +1862,8 @@
 							"any_condition": {
 								"hide_dexint_shields": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_int_shields",
@@ -1709,7 +1879,8 @@
 							"any_condition": {
 								"hide_int_shields": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_intstr_shields",
@@ -1725,7 +1896,8 @@
 							"any_condition": {
 								"hide_intstr_shields": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1751,7 +1923,8 @@
 							"any_condition": {
 								"hide_str_gloves": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_strdex_gloves",
@@ -1767,7 +1940,8 @@
 							"any_condition": {
 								"hide_str_gloves": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dex_gloves",
@@ -1783,7 +1957,8 @@
 							"any_condition": {
 								"hide_dex_gloves": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dexint_gloves",
@@ -1799,7 +1974,8 @@
 							"any_condition": {
 								"hide_dexint_gloves": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_int_gloves",
@@ -1815,7 +1991,8 @@
 							"any_condition": {
 								"hide_int_gloves": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_intstr_gloves",
@@ -1831,7 +2008,8 @@
 							"any_condition": {
 								"hide_intstr_gloves": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1857,7 +2035,8 @@
 							"any_condition": {
 								"hide_str_boots": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_strdex_boots",
@@ -1873,7 +2052,8 @@
 							"any_condition": {
 								"hide_str_boots": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dex_boots",
@@ -1889,7 +2069,8 @@
 							"any_condition": {
 								"hide_dex_boots": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dexint_boots",
@@ -1905,7 +2086,8 @@
 							"any_condition": {
 								"hide_dexint_boots": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_int_boots",
@@ -1921,7 +2103,8 @@
 							"any_condition": {
 								"hide_int_boots": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_intstr_boots",
@@ -1937,7 +2120,8 @@
 							"any_condition": {
 								"hide_intstr_boots": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -1963,7 +2147,8 @@
 							"any_condition": {
 								"hide_str_body_armours": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_strdex_body_armours",
@@ -1979,7 +2164,8 @@
 							"any_condition": {
 								"hide_str_body_armours": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dex_body_armours",
@@ -1995,7 +2181,8 @@
 							"any_condition": {
 								"hide_dex_body_armours": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dexint_body_armours",
@@ -2011,7 +2198,8 @@
 							"any_condition": {
 								"hide_dexint_body_armours": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_int_body_armours",
@@ -2027,7 +2215,8 @@
 							"any_condition": {
 								"hide_int_body_armours": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_intstr_body_armours",
@@ -2043,7 +2232,8 @@
 							"any_condition": {
 								"hide_intstr_body_armours": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -2069,7 +2259,8 @@
 							"any_condition": {
 								"hide_str_helmets": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_strdex_helmets",
@@ -2085,7 +2276,8 @@
 							"any_condition": {
 								"hide_str_helmets": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dex_helmets",
@@ -2101,7 +2293,8 @@
 							"any_condition": {
 								"hide_dex_helmets": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_dexint_helmets",
@@ -2117,7 +2310,8 @@
 							"any_condition": {
 								"hide_dexint_helmets": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_int_helmets",
@@ -2133,7 +2327,8 @@
 							"any_condition": {
 								"hide_int_helmets": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"exact_base_type": "_t1_intstr_helmets",
@@ -2149,7 +2344,8 @@
 							"any_condition": {
 								"hide_intstr_helmets": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						}
 					],
 					"rarity": [
@@ -2175,7 +2371,8 @@
 							"any_condition": {
 								"hide_jewellry": false
 							},
-							"area_level": "< 80"
+							"area_level": "< 80",
+							"strictness": 0
 						},
 						{
 							"hide": true,
@@ -2229,6 +2426,9 @@
 						},
 						{
 							"exact_base_type": "_low_divination_cards",
+							"exact_class": [
+								"Divination Cards"
+							],
 							"icon": {
 								"colour": "white",
 								"shape": "square",
@@ -2240,6 +2440,9 @@
 						},
 						{
 							"exact_base_type": "_mid_divination_cards",
+							"exact_class": [
+								"Divination Cards"
+							],
 							"icon": {
 								"colour": "white",
 								"shape": "square",
@@ -2248,23 +2451,28 @@
 						},
 						{
 							"exact_base_type": "_high_divination_cards",
+							"exact_class": [
+								"Divination Cards"
+							],
 							"icon": {
 								"colour": "white",
 								"shape": "square",
 								"size": "large"
 							}
-						},
-						{
-							"hide": false
 						}
-					],
-					"exact_class": [
-						"Divination Cards"
 					],
 					"label": {
 						"text": "0 0 0 255",
 						"border": "0 0 0 255",
 						"background": "163 149 137 255"
+					}
+				},
+				{
+					"exact_class": [
+						"Divination Cards"
+					],
+					"label": {
+						"background": "255 255 255 150"
 					},
 					"icon": {
 						"colour": "pink",

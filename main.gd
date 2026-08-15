@@ -140,7 +140,7 @@ func _generate_filter() -> void:
 	_print_message("[color=green]Generating filters...[/color]")
 
 	if FileAccess.file_exists(m_filter_config_path) == false:
-		printerr("No config file was found at '%s'" % m_filter_config_path)
+		_print_error("No config file was found at '%s'" % m_filter_config_path)
 	
 	var filter_config_file : FileAccess = FileAccess.open(m_filter_config_path, FileAccess.ModeFlags.READ)
 	var filter_config : Dictionary = JSON.parse_string(filter_config_file.get_as_text())
@@ -155,27 +155,55 @@ func _generate_filter() -> void:
 		var combined_config : Dictionary = base_config.duplicate_deep()
 		var filter_specific_config : Dictionary = filter.get("config", {})
 
-		combined_config.merge(filter_specific_config, true)
+		combined_config.merge(filter_specific_config)
 
 		# Merge does not overwrite thing by default and for conditions we want to merge it on a per-element basis so we have
 		# to do it manually if conditions exists in both the base config and the filter. The condition merge does overwrite.
 		# TODO: We might need to do this for more dictionaries if they are added in the future, maybe a better system is possible?
-		if base_config.has("conditions") && filter_specific_config.has("conditions"):
-			combined_config["conditions"].merge(filter_specific_config["conditions"], true)
+		if combined_config.has("conditions") == false:
+			combined_config["conditions"] = {}
+
+		# Filter overrides base conditions
+		if filter_specific_config.has("conditions"):
+			for entry_key : String in filter_specific_config["conditions"].keys():
+				combined_config["conditions"][entry_key] = filter_specific_config["conditions"][entry_key]
 
 		# Load the layout and string collections and make them into Dictionaries
 		if FileAccess.file_exists(combined_config["layout"]) == false:
+			_print_error("Error while creating filter '{0}', layout file '{1}' could not be found!".format([
+				filter["name"],
+				combined_config["layout"]
+			]))
 			continue
 
 		var layout_file : FileAccess = FileAccess.open(filter.get("layout", combined_config["layout"]), FileAccess.ModeFlags.READ)
+		var layout_json : JSON = JSON.new()
+		var string_collections_json : JSON = JSON.new()
 
-		if FileAccess.file_exists(combined_config["string_collections"])== false:
+		if layout_json.parse(layout_file.get_as_text()) != Error.OK:
+			_print_error("Error while creating filter '{0}', could not parse layout JSON '{1}'\n\t{2}: {3}".format([
+				filter["name"],
+				filter.get("layout", combined_config["layout"]),
+				layout_json.get_error_line(),
+				layout_json.get_error_message()
+			]))
 			continue
 
-		var string_collections_file : FileAccess = FileAccess.open(combined_config["string_collections"], FileAccess.ModeFlags.READ)
+		# String Collections should be possible to be empty, they are not an requirement.
+		if FileAccess.file_exists(combined_config["string_collections"]):
+			var string_collections_file : FileAccess = FileAccess.open(combined_config["string_collections"], FileAccess.ModeFlags.READ)
 
-		var layout : Dictionary = JSON.parse_string(layout_file.get_as_text())
-		var string_collections : Dictionary = JSON.parse_string(string_collections_file.get_as_text())
+			if string_collections_json.parse(string_collections_file.get_as_text()) != Error.OK:
+				_print_error("Error while creating filter '{0}', could not parse string collectiosn from '{1}'\n\t{2}: {3}".format([
+					filter["name"],
+					filter.get("layout", combined_config["layout"]),
+					string_collections_json.get_error_line(),
+					string_collections_json.get_error_message()
+				]))
+				continue
+
+		var layout : Dictionary = layout_json.data
+		var string_collections : Dictionary = string_collections_json.data
 
 		# The string collections will be assigned to the filter, overriding whatever's there.
 		if layout.has("string_collections") == false:
@@ -185,6 +213,9 @@ func _generate_filter() -> void:
 			layout["config"] = {
 				"conditions": {}
 			}
+
+		if combined_config.has("strictness"):
+			layout["strictness"] = combined_config.get("strictness")
 
 		for str_coll : String in string_collections.keys():
 			layout["string_collections"][str_coll] = string_collections[str_coll]
