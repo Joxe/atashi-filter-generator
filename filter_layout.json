@@ -930,11 +930,6 @@
 							"area_level": ">= 75"
 						},
 						{
-							"stack_size": "< 8",
-							"exact_base_type": "_uncommon_currencies",
-							"area_level": ">= 79"
-						},
-						{
 							"stack_size": 1,
 							"exact_base_type": "_rare_currencies",
 							"area_level": ">= 79"
