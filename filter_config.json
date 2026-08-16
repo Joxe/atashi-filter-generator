@@ -28,6 +28,25 @@
 			}
 		},
 		{
+			"name": "Atashi 3.29 Strict Pruned Rares",
+			"config": {
+				"strictness": 1.0,
+				"conditions": {
+					"hide_1h_swords": true,
+					"hide_2h_swords": true,
+					"hide_1h_axes": true,
+					"hide_2h_axes": true,
+					"hide_1h_maces": true,
+					"hide_2h_maces": true,
+					"hide_warstaves": true,
+					"hide_claws": true,
+					"hide_daggers": true,
+					"hide_bows": true,
+					"hide_quivers": true
+				}
+			}
+		},
+		{
 			"name": "Atashi 3.29 SSF",
 			"config": {
 				"conditions": {

@@ -110,15 +110,15 @@
 	],
 	"_common_currencies": [
 		"Orb of Transmutation",
-		"Orb of Augmentation",
-		"Orb of Alteration"
+		"Orb of Chance",
+		"Orb of Augmentation"
 	],
 	"_uncommon_currencies": [
-		"Blacksmith's Whetstone",
-		"Armourer's Scrap",
+		"Orb of Alteration",
 		"Orb of Binding",
 		"Orb of Alchemy",
-		"Orb of Chance",
+		"Blacksmith's Whetstone",
+		"Armourer's Scrap",
 		"Jeweller's Orb"
 	],
 	"_rare_currencies": [
@@ -137,7 +137,6 @@
 		"Instilling Orb",
 		"Stacked Deck",
 		"Enkindling Orb",
-		"Tainted Chromatic Orb",
 		"Refracting Fog",
 		"Vivid Crystallised Lifeforce",
 		"Primal Crystallised Lifeforce",
@@ -210,6 +209,18 @@
 		"of Jorgin's Veil",
 		"Riker",
 		"Tora's Veiled"
+	],
+	"_beyond_currencies": [
+		"Tainted Armourer's Scrap",
+		"Tainted Blacksmith's Whetstone",
+		"Tainted Chaos Orb",
+		"Tainted Chromatic Orb",
+		"Tainted Divine Teardrop",
+		"Tainted Exalted Orb",
+		"Tainted Jeweller's Orb",
+		"Tainted Mythic Orb",
+		"Tainted Orb of Fusing",
+		"Volatile Vaal Orb"
 	],
 	"_t1_claws": [
 		"Imperial Claw",
@@ -1065,7 +1076,8 @@
 		"Brass Maul",
 		"Compound Spiked Shield",
 		"Jagged Maul",
-		"Goat's Horn"
+		"Goat's Horn",
+		"Flaying Knife"
 	],
 	"_good_scarabs": [
 		"Horned Scarab of Bloodlines",

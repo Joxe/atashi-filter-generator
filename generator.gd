@@ -31,6 +31,10 @@ var m_formatted_labels : Dictionary[StringName, PackedStringArray] = {}
 var m_formatted_icons : Dictionary[StringName, String] = {}
 var m_constructed_filter : Array[PackedStringArray] = []
 
+# These are set while parsing so we can split up the parsing into multiple private functions. See these as read-only.
+var m_group_entry : Dictionary = {}
+var m_rule : Dictionary = {}
+
 func get_constructed_filter() -> Array[PackedStringArray]:
 	return m_constructed_filter
 
@@ -113,6 +117,7 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 		filter_category.append("# ===========================\n")
 
 		for rule : Dictionary in category["rules"]:
+			m_rule = rule
 			var group : Array = []
 
 			if rule.has("group"):
@@ -121,61 +126,22 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				group.append(rule)
 
 			for group_entry : Dictionary in group:
-				# Generate check and get functions for this group. The idea is that they first check the group and if
-				# they don't find what they are looking for they go up the chain to the rule.
-				var has_key : Callable = func(key : String) -> bool:
-					return group_entry.has(key) || rule.has(key)
-
-				var get_value : Callable = func(key : String) -> Variant:
-					if group_entry.has(key):
-						return group_entry[key]
-					elif rule.has(key):
-						return rule[key]
-
-					return null
-
-				# Rules without a condition are always added.
-				var is_enabled : bool = false
-
-				if has_key.call("any_condition"):
-					# Any true condition is enough.
-					var conditions : Dictionary = get_value.call("any_condition")
-					for condition : String in conditions.keys():
-						if m_conditions.get(condition, false) == conditions[condition]:
-							is_enabled = true
-							break
-				elif has_key.call("all_conditions"):
-					# We need each condition to match. Set enabled to true and then toggle it to false if any condition fails.
-					is_enabled = true
-					var conditions : Dictionary = get_value.call("all_conditions")
-					for condition : String in conditions.keys():
-						if m_conditions.get(condition, false) != conditions[condition]:
-							is_enabled = false
-							break
-				else:
-					is_enabled = true
+				m_group_entry = group_entry
 
 				# Check if the conditions enabled or disabled this group entry.
-				if is_enabled == false:
+				if _is_rule_enabled() == false:
 					continue
-
-				# Strictness is a special condition that makes a lot of sense to PoE players, a stricter filter generally 
-				# has more things hidden.
-				if has_key.call("strictness"):
-					var strictness : int = get_value.call("strictness")
-					if strictness < m_strictness:
-						continue
 
 				var generated_rule : PackedStringArray = []
 
-				if has_key.call("comment"):
-					generated_rule.append_array(_parse_comment(get_value.call("comment")))
+				if _rule_has_key("comment"):
+					generated_rule.append_array(_parse_comment(_get_rule_value("comment")))
 
 				# ===========================
 				# Show is default, Hide if the user has specified it as true.
 				# ===========================
 				var hidden_rule : bool = false
-				if has_key.call("hide") && get_value.call("hide") == true:
+				if _rule_has_key("hide") && _get_rule_value("hide") == true:
 					hidden_rule = true
 					generated_rule.append("Hide")
 				else:
@@ -184,62 +150,62 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				# ===========================
 				# Base Type
 				# ===========================
-				if has_key.call("base_type"):
-					generated_rule.append(_construct_line("base_type", get_value.call("base_type"), false))
-				elif has_key.call("exact_base_type"):
-					generated_rule.append(_construct_line("base_type", get_value.call("exact_base_type"), true))
+				if _rule_has_key("base_type"):
+					generated_rule.append(_construct_line("base_type", _get_rule_value("base_type"), false))
+				elif _rule_has_key("exact_base_type"):
+					generated_rule.append(_construct_line("base_type", _get_rule_value("exact_base_type"), true))
 
 				# ===========================
 				# Checks item class
 				# ===========================
-				if has_key.call("class"):
-					generated_rule.append(_construct_line("class", get_value.call("class"), false))
-				elif has_key.call("exact_class"):
-					generated_rule.append(_construct_line("class", get_value.call("exact_class"), true))
+				if _rule_has_key("class"):
+					generated_rule.append(_construct_line("class", _get_rule_value("class"), false))
+				elif _rule_has_key("exact_class"):
+					generated_rule.append(_construct_line("class", _get_rule_value("exact_class"), true))
 
 				# ===========================
 				# Rarity
 				# ===========================
-				if has_key.call("rarity"):
-					if typeof(get_value.call("rarity")) == TYPE_ARRAY:
+				if _rule_has_key("rarity"):
+					if typeof(_get_rule_value("rarity")) == TYPE_ARRAY:
 						var rarities : PackedStringArray = [
 							"\tRarity =="
 						]
 
-						for rarity : String in get_value.call("rarity"):
+						for rarity : String in _get_rule_value("rarity"):
 							rarities.append("\"%s\"" % rarity.to_pascal_case())
 
 						generated_rule.append(" ".join(rarities))
 					else:
-						generated_rule.append("\tRarity == %s" % get_value.call("rarity").to_pascal_case())
+						generated_rule.append("\tRarity == %s" % _get_rule_value("rarity").to_pascal_case())
 
 
 				# ===========================
 				# Socket Group
 				# ===========================
-				if has_key.call("socket_group"):
-					var socket_group : String = get_value.call("socket_group")
+				if _rule_has_key("socket_group"):
+					var socket_group : String = _get_rule_value("socket_group")
 					generated_rule.append("\tSocketGroup == \"%s\"" % socket_group)
 
 				# ===========================
 				# Influence checking
 				# ===========================
-				if has_key.call("influence"):
-					if typeof(get_value.call("influence")) == TYPE_ARRAY:
+				if _rule_has_key("influence"):
+					if typeof(_get_rule_value("influence")) == TYPE_ARRAY:
 						var rarities : PackedStringArray = [
 							"\tHasInfluence"
 						]
 
-						for influence : String in get_value.call("influence"):
+						for influence : String in _get_rule_value("influence"):
 							rarities.append("\"%s\"" % influence.to_pascal_case())
 
 						generated_rule.append(" ".join(rarities))
 					else:
-						generated_rule.append("\tHasInfluence %s" % get_value.call("influence").to_pascal_case())
+						generated_rule.append("\tHasInfluence %s" % _get_rule_value("influence").to_pascal_case())
 
 				for boolean_value : String in BOOLEAN_VALUES:
-					if has_key.call(boolean_value):
-						var is_set : bool = get_value.call(boolean_value)
+					if _rule_has_key(boolean_value):
+						var is_set : bool = _get_rule_value(boolean_value)
 						var filter_name : String = _layout_to_filter_name(boolean_value)
 
 						if is_set:
@@ -248,8 +214,8 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 							generated_rule.append("\t%s False" % filter_name)
 
 				for integer_value : String in INTEGER_VALUES:
-					if has_key.call(integer_value):
-						var integer_value_variant : Variant = get_value.call(integer_value)
+					if _rule_has_key(integer_value):
+						var integer_value_variant : Variant = _get_rule_value(integer_value)
 						var filter_name : String = _layout_to_filter_name(integer_value)
 
 						if typeof(integer_value_variant) == TYPE_INT:
@@ -265,33 +231,33 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 				# ===========================
 				# Mod check
 				# ===========================
-				if has_key.call("has_mod"):
-					generated_rule.append(_construct_line("has_mod", get_value.call("has_mod"), false))
-				elif has_key.call("exact_has_mod"):
-					generated_rule.append(_construct_line("has_mod", get_value.call("exact_has_mod"), true))
+				if _rule_has_key("has_mod"):
+					generated_rule.append(_construct_line("has_mod", _get_rule_value("has_mod"), false))
+				elif _rule_has_key("exact_has_mod"):
+					generated_rule.append(_construct_line("has_mod", _get_rule_value("exact_has_mod"), true))
 
 				# ===========================
 				# Label
 				# ===========================
-				if has_key.call("label"):
-					if typeof(get_value.call("label")) == TYPE_STRING:
-						generated_rule.append_array(m_formatted_labels[get_value.call("label")])
+				if _rule_has_key("label"):
+					if typeof(_get_rule_value("label")) == TYPE_STRING:
+						generated_rule.append_array(m_formatted_labels[_get_rule_value("label")])
 					else:
-						generated_rule.append_array(_construct_label(get_value.call("label")))
+						generated_rule.append_array(_construct_label(_get_rule_value("label")))
 				elif hidden_rule == false && m_global_label_overrides.is_empty() == false:
 					generated_rule.append_array(_construct_label({}))
 
 				# ===========================
 				# Icon
 				# ===========================
-				if has_key.call("icon"):
-					generated_rule.append(_construct_icon_line(get_value.call("icon")))
+				if _rule_has_key("icon"):
+					generated_rule.append(_construct_icon_line(_get_rule_value("icon")))
 
 				# ===========================
 				# Effect
 				# ===========================
-				if has_key.call("effect"):
-					generated_rule.append("\tPlayEffect %s" % get_value.call("effect").to_pascal_case())
+				if _rule_has_key("effect"):
+					generated_rule.append("\tPlayEffect %s" % _get_rule_value("effect").to_pascal_case())
 
 				if generated_rule.size() > 1:
 					generated_rule.append("")
@@ -300,6 +266,77 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 		filter.append(filter_category)
 
 	return filter
+
+func _is_rule_enabled() -> bool:
+	# Rules without a condition are always added.
+	var is_enabled : bool = false
+
+	if _rule_has_key("any_condition"):
+		# Any true condition is enough.
+		var conditions : Dictionary = _get_rule_value("any_condition")
+		for condition : String in conditions.keys():
+			if m_conditions.get(condition, false) == conditions[condition]:
+				is_enabled = true
+				break
+	elif _rule_has_key("all_conditions"):
+		# We need each condition to match. Set enabled to true and then toggle it to false if any condition fails.
+		var conditions : Dictionary = _get_rule_value("all_conditions")
+		for condition : String in conditions.keys():
+			if m_conditions.get(condition, false) != conditions[condition]:
+				return false
+	else:
+		is_enabled = true
+
+	if is_enabled == false:
+		return false
+
+	if _rule_has_key("strictness"):
+		var strictness_variant : Variant = _get_rule_value("strictness")
+
+		# If strictness is just a number, it is interpreted as equals.
+		if typeof(strictness_variant) == TYPE_INT:
+			var strictness : int = strictness_variant
+
+			if strictness != m_strictness:
+				is_enabled = false
+		elif typeof(strictness_variant) == TYPE_FLOAT:
+			# We often have floats in a JSON since JSON uses floats for everything. But we know these values should be integers.
+			var strictness : int = roundi(strictness_variant)
+
+			if strictness != m_strictness:
+				is_enabled = false
+		elif typeof(strictness_variant) == TYPE_STRING:
+			# At this point we hope that it's a maths expression like "strictness": ">= 1"
+			var strictness_expression : String = strictness_variant
+			var split_expression : PackedStringArray = strictness_expression.dedent().split(" ")
+			var operator : String = split_expression[0]
+			var value : int = int(split_expression[1])
+
+			if operator == "==":
+				is_enabled = m_strictness == value
+			elif operator == "!=":
+				is_enabled = m_strictness != value
+			elif operator == "<=":
+				is_enabled = m_strictness <= value
+			elif operator == ">=":
+				is_enabled = m_strictness >= value
+			elif operator == ">":
+				is_enabled = m_strictness > value
+			elif operator == "<":
+				is_enabled = m_strictness < value
+
+	return is_enabled
+
+func _rule_has_key(key : String) -> bool:
+	return m_group_entry.has(key) || m_rule.has(key)
+
+func _get_rule_value(key : String) -> Variant:
+	if m_group_entry.has(key):
+		return m_group_entry[key]
+	elif m_rule.has(key):
+		return m_rule[key]
+
+	return null
 
 func _parse_colour(colour_string : String) -> Color:
 	if colour_string.begins_with("#"):

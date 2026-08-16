@@ -760,6 +760,26 @@
 			]
 		},
 		{
+			"category": "Beyond",
+			"rules": [
+				{
+					"exact_base_type": "_beyond_currencies",
+					"exact_class": [
+						"Stackable Currency"
+					],
+					"label": {
+						"border": "180 96 0 255",
+						"text": "180 96 0 255"
+					},
+					"icon": {
+						"colour": "brown",
+						"shape": "circle",
+						"size": "small"
+					}
+				}
+			]
+		},
+		{
 			"category": "Incursion",
 			"rules": [
 				{
@@ -859,7 +879,6 @@
 			"category": "Currency",
 			"rules": [
 				{
-					"strictness": 0,
 					"hide": true,
 					"exact_class": [
 						"Stackable Currency"
@@ -894,7 +913,14 @@
 							}
 						},
 						{
+							"strictness": 0,
 							"stack_size": 1,
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 72"
+						},
+						{
+							"strictness": "> 0",
+							"stack_size": "< 3",
 							"exact_base_type": "_uncommon_currencies",
 							"area_level": ">= 72"
 						},
@@ -910,63 +936,6 @@
 						},
 						{
 							"stack_size": 1,
-							"exact_base_type": "_rare_currencies",
-							"area_level": ">= 79"
-						}
-					]
-				},
-				{
-					"strictness": 1,
-					"hide": true,
-					"exact_class": [
-						"Stackable Currency"
-					],
-					"any_condition": {
-						"ruthless": false
-					},
-					"group": [
-						{
-							"exact_base_type": "_dog_currencies",
-							"area_level": ">= 10",
-							"any_condition":{
-								"ruthless": false
-							}
-						},
-						{
-							"stack_size": 1,
-							"exact_base_type": "_common_currencies",
-							"area_level": ">= 45"
-						},
-						{
-							"stack_size": "< 5",
-							"exact_base_type": "_common_currencies",
-							"area_level": ">= 71"
-						},
-						{
-							"stack_size": "< 10",
-							"exact_base_type": "_common_currencies",
-							"area_level": ">= 75",
-							"any_condition": {
-								"ssf": false
-							}
-						},
-						{
-							"stack_size": "< 3",
-							"exact_base_type": "_uncommon_currencies",
-							"area_level": ">= 72"
-						},
-						{
-							"stack_size": "< 6",
-							"exact_base_type": "_uncommon_currencies",
-							"area_level": ">= 75"
-						},
-						{
-							"stack_size": "< 8",
-							"exact_base_type": "_uncommon_currencies",
-							"area_level": ">= 79"
-						},
-						{
-							"stack_size": "< 3",
 							"exact_base_type": "_rare_currencies",
 							"area_level": ">= 79"
 						}
@@ -1343,8 +1312,7 @@
 				{
 					"rarity": [
 						"magic",
-						"rare",
-						"unique"
+						"rare"
 					],
 					"identified": true
 				},
@@ -2393,12 +2361,22 @@
 					"exact_base_type": "_talismans"
 				},
 				{
+					"strictness": 0,
+					"identified": false,
+					"hide": false,
+					"exact_class": "_all_item_classes",
+					"rarity": [
+						"rare"
+					]
+				},
+				{
+					"strictness": 1,
+					"identified": false,
 					"hide": true,
 					"exact_class": "_all_item_classes",
 					"rarity": [
 						"rare"
-					],
-					"area_level": " >= 75"
+					]
 				},
 				{
 					"exact_class": "_all_item_classes",
@@ -2486,10 +2464,21 @@
 			"category": "Unique Items",
 			"rules": [
 				{
+					"strictness": 0,
 					"hide": true,
 					"exact_base_type": "_dog_uniques",
 					"corrupted": false,
 					"identified": false,
+					"area_level": ">= 67",
+					"rarity": [
+						"unique"
+					]
+				},
+				{
+					"strictness": "> 0",
+					"hide": true,
+					"exact_base_type": "_dog_uniques",
+					"corrupted": false,
 					"area_level": ">= 67",
 					"rarity": [
 						"unique"
