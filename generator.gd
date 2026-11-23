@@ -19,7 +19,8 @@ const INTEGER_VALUES : Array[String] = [
 	"area_level",
 	"gem_level",
 	"quality",
-	"item_level"
+	"item_level",
+	"item_tier"
 ]
 
 var m_strictness : int = 0
@@ -488,5 +489,7 @@ func _layout_to_filter_name(in_name : String) -> String:
 			return "TransfiguredGem"
 		"item_level":
 			return "ItemLevel"
+		"item_tier":
+			return "UnidentifiedItemTier"
 		_:
 			return in_name

@@ -1,10 +1,10 @@
 {
 	"filters": [
 		{
-			"name": "Atashi 3.29 Standard"
+			"name": "Atashi 3.30 Standard"
 		},
 		{
-			"name": "Atashi 3.29 Pruned Rares",
+			"name": "Atashi 3.30 Pruned Rares",
 			"config": {
 				"conditions": {
 					"hide_1h_swords": true,
@@ -22,13 +22,13 @@
 			}
 		},
 		{
-			"name": "Atashi 3.29 Strict",
+			"name": "Atashi 3.30 Strict",
 			"config": {
 				"strictness": 1.0
 			}
 		},
 		{
-			"name": "Atashi 3.29 Strict Pruned Rares",
+			"name": "Atashi 3.30 Strict Pruned Rares",
 			"config": {
 				"strictness": 1.0,
 				"conditions": {
@@ -47,7 +47,7 @@
 			}
 		},
 		{
-			"name": "Atashi 3.29 SSF",
+			"name": "Atashi 3.30 SSF",
 			"config": {
 				"conditions": {
 					"ssf": true
@@ -55,7 +55,7 @@
 			}
 		},
 		{
-			"name": "Atashi 3.29 Ruthless",
+			"name": "Atashi 3.30 Ruthless",
 			"config": {
 				"conditions": {
 					"ruthless": true
@@ -72,7 +72,8 @@
 			"font_size": 28.0
 		},
 		"conditions": {
-			"patch_3.29": true
+			"patch_3.29": false,
+			"patch_3.30": true,
 		},
 		"string_collections": "./string_collections.json",
 		"layout": "./filter_layout.json"

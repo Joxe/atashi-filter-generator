@@ -129,6 +129,15 @@
 					"quality": 0
 				},
 				{
+					"area_level": "< 68",
+					"exact_class": [
+						"Life Flasks",
+						"Mana Flasks",
+						"Hybrid Flasks",
+						"Utility Flasks"
+					]
+				},
+				{
 					"exact_class": [
 						"Boots"
 					],
@@ -150,7 +159,7 @@
 					"icon": {
 						"size": "small",
 						"shape": "triangle",
-						"colour": "white"
+						"colour": "square"
 					}
 				},
 				{
@@ -286,6 +295,9 @@
 							"any_condition": {
 								"ruthless": false
 							}
+						},
+						{
+							"area_level": "< 38"
 						}
 					],
 					"exact_class": [
@@ -721,7 +733,7 @@
 			]
 		},
 		{
-			"category": "Curse of the Allflame",
+			"category": "Curse of the Allflame (3.29)",
 			"rules": [
 				{
 					"any_condition": {
@@ -754,6 +766,25 @@
 					"icon": {
 						"colour": "yellow",
 						"shape": "circle",
+						"size": "small"
+					}
+				}
+			]
+		},
+		{
+			"category": "Covens of Umbra (3.30)",
+			"rules": [
+				{
+					"exact_class": [
+						"Viscera"
+					],
+					"any_condition": {
+						"patch_3.30": true
+					},
+					"effect": "yellow",
+					"icon": {
+						"colour": "yellow",
+						"shape": "kite",
 						"size": "small"
 					}
 				}
@@ -1205,41 +1236,6 @@
 			]
 		},
 		{
-			"category": "Scarabs",
-			"rules": [
-				{
-					"group": [
-						{
-							"comment": "Remember to update what the good scarabs are in your string collections file",
-							"exact_base_type": "_good_scarabs",
-							"label": {
-								"text": "249 150 25 255",
-								"border": "249 150 25 255"
-							},
-							"icon": {
-								"colour": "yellow",
-								"shape": "moon",
-								"size": "small"
-							}
-						},
-						{
-							"base_type": [
-								"Scarab"
-							]
-						}
-					],
-					"exact_class": [
-						"Map Fragments"
-					],
-					"icon": {
-						"colour": "white",
-						"shape": "moon",
-						"size": "small"
-					}
-				}
-			]
-		},
-		{
 			"category": "Map Fragments",
 			"rules": [
 				{
@@ -1250,21 +1246,21 @@
 						"size": "small"
 					},
 					"exact_base_type": [
-						"Divine Vessel"
+						"Divine Vessel",
+						"Expedition Thread",
+						"Abyss Thread",
+						"Breach Thread",
+						"Ritual Thread",
+						"Ultimatum Thread",
+						"Legion Thread",
+						"Blight Thread",
+						"Bestiary Thread",
+						"Betrayal Thread",
+						"Incursion Thread",
+						"Cursed Poppet"
 					],
 					"exact_class": [
 						"Map Fragments"
-					]
-				},
-				{
-					"exact_class": [
-						"Map Fragments"
-					],
-					"exact_base_type": [
-						"Sacrifice at Dawn",
-						"Sacrifice at Midnight",
-						"Sacrifice at Dusk",
-						"Sacrifice at Noon"
 					]
 				}
 			]
@@ -1360,6 +1356,46 @@
 						"normal",
 						"magic"
 					]
+				}
+			]
+		},
+		{
+			"category": "High-tier Rares",
+			"rules": [
+				{
+					"area_level": " < 68",
+					"item_tier": "> 1",
+					"rarity": [
+						"magic",
+						"rare"
+					],
+					"icon": {
+						"colour": "white",
+						"shape": "hexagon",
+						"size": "small"
+					}
+				},
+				{
+					"area_level": ">= 68",
+					"item_tier": "== 1",
+					"rarity": [
+						"magic",
+						"rare"
+					],
+					"hide": true
+				},
+				{
+					"area_level": " >= 68",
+					"item_tier": "> 3",
+					"rarity": [
+						"magic",
+						"rare"
+					],
+					"icon": {
+						"colour": "white",
+						"shape": "hexagon",
+						"size": "small"
+					}
 				}
 			]
 		},
