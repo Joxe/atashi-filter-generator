@@ -25,6 +25,28 @@
 		"Rings",
 		"Belts"
 	],
+	"_armours_and_weapons": [
+		"Body Armours",
+		"Boots",
+		"Bows",
+		"Claws",
+		"Daggers",
+		"Gloves",
+		"Helmets",
+		"One Hand Axes",
+		"One Hand Maces",
+		"One Hand Swords",
+		"Rune Daggers",
+		"Sceptres",
+		"Shields",
+		"Staves",
+		"Thrusting One Hand Swords",
+		"Two Hand Axes",
+		"Two Hand Maces",
+		"Two Hand Swords",
+		"Wands",
+		"Warstaves"
+	],
 	"_all_jewels": [
 		"Cobalt Jewel",
 		"Crimson Jewel",
@@ -160,7 +182,10 @@
 		"Immortal Astrolabe",
 		"Feral Astrolabe",
 		"Royal Astrolabe",
-		"Cryptic Astrolabe"
+		"Cryptic Astrolabe",
+		"Foulborn Orb of Augmentation",
+		"Foulborn Regal Orb",
+		"Foulborn Exalted Orb"
 	],
 	"_giga_tier_currencies": [
 		"Veiled Chaos Orb",
@@ -188,7 +213,8 @@
 		"Eldritch Exalted Orb",
 		"Eldritch Orb of Annulment",
 		"Crescent Splinter",
-		"Memory of Loneliness"
+		"Memory of Loneliness",
+		"Divine Vessel"
 	],
 	"_leader_veiled_mods": [
 		"Catarina's Veiled",
@@ -728,7 +754,8 @@
 		"Crystal Belt",
 		"Vanguard Belt",
 		"Stygian Vise",
-		"Pearlescent Amulet"
+		"Pearlescent Amulet",
+		"Cord Belt"
 	],
 	"_t2_jewellry": [
 		"Bone Ring",
@@ -810,6 +837,7 @@
 		"Wolf Alpha Talisman"
 	],
 	"_dog_divination_cards": [
+		"The Fletcher",
 		"The Scholar",
 		"Thunderous Skies",
 		"The Witch",
@@ -946,7 +974,9 @@
 		"Ever-Changing",
 		"The Encroaching Darkness",
 		"The Trial",
-		"Alivia's Grace"
+		"Alivia's Grace",
+		"The Valkyrie",
+		"The Dragon"
 	],
 	"_mid_divination_cards": [
 		"The Summoner",

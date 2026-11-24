@@ -55,6 +55,26 @@
 			}
 		},
 		{
+			"name": "Atashi 3.30 SSF Strict",
+			"config": {
+				"conditions": {
+					"ssf": true,
+					"hide_1h_swords": true,
+					"hide_2h_swords": true,
+					"hide_1h_axes": true,
+					"hide_2h_axes": true,
+					"hide_1h_maces": true,
+					"hide_2h_maces": true,
+					"hide_warstaves": true,
+					"hide_claws": true,
+					"hide_daggers": true,
+					"hide_bows": true,
+					"hide_quivers": true
+				},
+				"strictness": 1.0
+			}
+		},
+		{
 			"name": "Atashi 3.30 Ruthless",
 			"config": {
 				"conditions": {
@@ -73,7 +93,7 @@
 		},
 		"conditions": {
 			"patch_3.29": false,
-			"patch_3.30": true,
+			"patch_3.30": true
 		},
 		"string_collections": "./string_collections.json",
 		"layout": "./filter_layout.json"
