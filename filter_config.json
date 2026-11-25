@@ -69,7 +69,8 @@
 					"hide_claws": true,
 					"hide_daggers": true,
 					"hide_bows": true,
-					"hide_quivers": true
+					"hide_quivers": true,
+					"hide_thrusting_swords": true
 				},
 				"strictness": 1.0
 			}

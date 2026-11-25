@@ -44,6 +44,9 @@
 		"currency_label": {
 			"text": "249 150 25 255",
 			"border": "249 150 25 255"
+		},
+		"good_rare": {
+			"border": "200 200 00 255"
 		}
 	},
 	"icons": {},
@@ -235,6 +238,7 @@
 						"magic",
 						"rare"
 					],
+					"strictness": 0,
 					"any_condition": {
 						"ssf": true
 					},
@@ -932,7 +936,7 @@
 						{
 							"exact_base_type": "_dog_currencies",
 							"area_level": ">= 10",
-							"any_condition":{
+							"any_condition": {
 								"ruthless": false
 							}
 						},
@@ -952,6 +956,14 @@
 							"area_level": ">= 75",
 							"any_condition": {
 								"ssf": false
+							}
+						},
+						{
+							"stack_size": "< 10",
+							"exact_base_type": "_common_currencies",
+							"area_level": ">= 80",
+							"any_condition": {
+								"ssf": true
 							}
 						},
 						{
@@ -982,6 +994,14 @@
 							"exact_base_type": "_uncommon_currencies",
 							"area_level": ">= 75",
 							"stack_size": "< 3",
+							"any_condition": {
+								"ssf": true
+							}
+						},
+						{
+							"exact_base_type": "_uncommon_currencies",
+							"area_level": ">= 80",
+							"stack_size": "< 5",
 							"any_condition": {
 								"ssf": true
 							}
@@ -1070,8 +1090,15 @@
 						},
 						{
 							"hide": true,
+							"strictness": 0,
 							"stack_size": "< 300",
-							"area_level": ">= 83"
+							"area_level": ">= 80"
+						},
+						{
+							"hide": true,
+							"strictness": 1,
+							"stack_size": "< 800",
+							"area_level": ">= 80"
 						},
 						{
 							"hide": false
@@ -1385,24 +1412,34 @@
 			]
 		},
 		{
-			"category": "Rare Equipment",
-			"comment": "Sorted by slot and then tier. T3 means all rares below the two best ones, so you will find lots of items of a class in early maps, then less and then only the highest tier once you reach T14+. T1 items has a border to make them visible when there are both T1 and other items, but when there's only T1 items the border will be hidden to reduce clutter.",
+			"category": "Rare Claws",
 			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_claws",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_claws",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_claws",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_claws",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_claws",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1412,47 +1449,79 @@
 					"exact_class": [
 						"Claws"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Daggers",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_daggers",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_daggers",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_daggers",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_daggers",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_daggers",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
 					"any_condition": {
-						"hide_daggers": false
+						"hide_thrusting_swords": false
 					},
 					"exact_class": [
 						"Daggers"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Wands",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_wands",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_wands",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_wands",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_wands",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_wands",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1462,47 +1531,38 @@
 					"exact_class": [
 						"Wands"
 					]
-				},
-				{
-					"group": [
-						{
-							"exact_base_type": "_t1_1h_swords",
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_1h_swords",
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						}
-					],
-					"rarity": [
-						"rare"
-					],
-					"any_condition": {
-						"hide_1h_swords": false
-					},
-					"exact_class": [
-						"One Hand Swords"
-					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Thrusting Swords",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_thrusting_swords",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_thrusting_swords",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_thrusting_swords",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_thrusting_swords",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_thrusting_swords",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1512,22 +1572,79 @@
 					"exact_class": [
 						"Thrusting One Hand Swords"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare One Hand Swords",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_1h_swords",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_1h_swords",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_1h_swords",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_1h_swords",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_1h_swords",
+							"area_level": "< 80",
+							"item_tier": "> 3"
+						}
+					],
+					"strictness": 0,
+					"rarity": [
+						"rare"
+					],
+					"any_condition": {
+						"hide_1h_swords": false
+					},
+					"exact_class": [
+						"One Hand Swords"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare One Hand Axes",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_1h_axes",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_1h_axes",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_1h_axes",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_1h_axes",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_1h_axes",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1537,22 +1654,38 @@
 					"exact_class": [
 						"One Hand Axes"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare One Hand Maces",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_1h_maces",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_1h_maces",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_1h_maces",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_1h_maces",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_1h_maces",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1562,22 +1695,38 @@
 					"exact_class": [
 						"One Hand Maces"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Sceptres",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_sceptres",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_sceptres",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_sceptres",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_sceptres",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_sceptres",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1587,22 +1736,38 @@
 					"exact_class": [
 						"Sceptres"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Rune Daggers",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_rune_daggers",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_rune_daggers",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_rune_daggers",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_rune_daggers",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_rune_daggers",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1612,22 +1777,38 @@
 					"exact_class": [
 						"Rune Daggers"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Bows",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_bows",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_bows",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_bows",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_bows",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_bows",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1637,22 +1818,38 @@
 					"exact_class": [
 						"Bows"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Staves",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_staves",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_staves",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_staves",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_staves",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_staves",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1662,22 +1859,38 @@
 					"exact_class": [
 						"Staves"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Two Hand Swords",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_2h_swords",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_2h_swords",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_2h_swords",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_2h_swords",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_2h_swords",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1687,22 +1900,38 @@
 					"exact_class": [
 						"Two Hand Swords"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Two Hand Maces",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_2h_maces",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_2h_maces",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_2h_maces",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_2h_maces",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_2h_maces",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1712,22 +1941,38 @@
 					"exact_class": [
 						"Two Hand Maces"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Two Hand Axes",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_2h_axes",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_2h_axes",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_2h_axes",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_2h_axes",
+							"area_level": "< 80"
 						},
 						{
 							"exact_base_type": "_t2_2h_axes",
 							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1737,22 +1982,37 @@
 					"exact_class": [
 						"Two Hand Axes"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Warstaves",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_warstaves",
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_warstaves",
+							"strictness": ">= 1"
 						},
 						{
 							"exact_base_type": "_t2_warstaves",
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_warstaves",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_warstaves",
+							"item_tier": "> 3"
 						}
 					],
+					"strictness": 0,
 					"rarity": [
 						"rare"
 					],
@@ -1762,26 +2022,32 @@
 					"exact_class": [
 						"Warstaves"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Quivers",
+			"comment": "TODO: Very unfinished, refine when you next play a bow build.",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": [
 								"Serrated Arrow Quiver"
 							],
-							"AreaLevel": ">= 31"
+							"area_level": ">= 31"
 						},
 						{
 							"exact_base_type": [
 								"Blunt Arrow Quiver"
 							],
-							"AreaLevel": ">= 61"
+							"area_level": ">= 61"
 						},
 						{
 							"exact_base_type": [
 								"Fire Arrow Quiver"
 							],
-							"AreaLevel": ">= 45"
+							"area_level": ">= 45"
 						}
 					],
 					"rarity": [
@@ -1793,600 +2059,1412 @@
 					"exact_class": [
 						"Quivers"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Strength Shields",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_str_shields",
-							"any_condition": {
-								"hide_str_shields": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_str_shields",
+							"strictness": ">= 1"
 						},
 						{
 							"exact_base_type": "_t2_str_shields",
-							"any_condition": {
-								"hide_str_shields": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
 						},
 						{
-							"exact_base_type": "_t1_strdex_shields",
-							"any_condition": {
-								"hide_strdex_shields": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"exact_base_type": "_t2_str_shields",
+							"area_level": "< 80"
 						},
 						{
-							"exact_base_type": "_t2_strdex_shields",
-							"any_condition": {
-								"hide_str_shields": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_shields",
+							"item_tier": "> 3"
 						},
 						{
-							"exact_base_type": "_t1_dex_shields",
-							"any_condition": {
-								"hide_dex_shields": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dex_shields",
-							"any_condition": {
-								"hide_dex_shields": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_dexint_shields",
-							"any_condition": {
-								"hide_dexint_shields": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dexint_shields",
-							"any_condition": {
-								"hide_dexint_shields": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_int_shields",
-							"any_condition": {
-								"hide_int_shields": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_int_shields",
-							"any_condition": {
-								"hide_int_shields": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_intstr_shields",
-							"any_condition": {
-								"hide_intstr_shields": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_intstr_shields",
-							"any_condition": {
-								"hide_intstr_shields": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_shields",
+							"memory_strands": "> 0"
 						}
 					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_str_shields": false
+					},
 					"rarity": [
 						"rare"
 					],
 					"exact_class": [
 						"Shields"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Strength/Dexterity Shields",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_strdex_shields",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_strdex_shields",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_strdex_shields",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_strdex_shields",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_strdex_shields",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_strdex_shields",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_strdex_shields": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Shields"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity Shields",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dex_shields",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dex_shields",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dex_shields",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dex_shields",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dex_shields",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dex_shields",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dex_shields": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Shields"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity/Intelligence Shields",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dexint_shields",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dexint_shields",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dexint_shields",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dexint_shields",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dexint_shields",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dexint_shields",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dexint_shields": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Shields"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence Shields",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_int_shields",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_int_shields",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_int_shields",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_int_shields",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_int_shields",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_int_shields",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_int_shields": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Shields"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence/Strength Shields",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_intstr_shields",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_intstr_shields",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_intstr_shields",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_intstr_shields",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_intstr_shields",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_intstr_shields",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_intstr_shields": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Shields"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Strength Gloves",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_str_gloves",
-							"any_condition": {
-								"hide_str_gloves": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_str_gloves",
+							"strictness": ">= 1"
 						},
 						{
 							"exact_base_type": "_t2_str_gloves",
-							"any_condition": {
-								"hide_str_gloves": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
 						},
 						{
-							"exact_base_type": "_t1_strdex_gloves",
-							"any_condition": {
-								"hide_strdex_gloves": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"exact_base_type": "_t2_str_gloves",
+							"area_level": "< 80"
 						},
 						{
-							"exact_base_type": "_t2_strdex_gloves",
-							"any_condition": {
-								"hide_str_gloves": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_gloves",
+							"item_tier": "> 3"
 						},
 						{
-							"exact_base_type": "_t1_dex_gloves",
-							"any_condition": {
-								"hide_dex_gloves": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dex_gloves",
-							"any_condition": {
-								"hide_dex_gloves": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_dexint_gloves",
-							"any_condition": {
-								"hide_dexint_gloves": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dexint_gloves",
-							"any_condition": {
-								"hide_dexint_gloves": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_int_gloves",
-							"any_condition": {
-								"hide_int_gloves": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_int_gloves",
-							"any_condition": {
-								"hide_int_gloves": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_intstr_gloves",
-							"any_condition": {
-								"hide_intstr_gloves": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_intstr_gloves",
-							"any_condition": {
-								"hide_intstr_gloves": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_gloves",
+							"memory_strands": "> 0"
 						}
 					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_str_gloves": false
+					},
 					"rarity": [
 						"rare"
 					],
 					"exact_class": [
 						"Gloves"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Strength/Dexterity Gloves",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_strdex_gloves",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_strdex_gloves",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_strdex_gloves",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_strdex_gloves",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_strdex_gloves",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_strdex_gloves",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_strdex_gloves": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Gloves"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity Gloves",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dex_gloves",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dex_gloves",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dex_gloves",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dex_gloves",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dex_gloves",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dex_gloves",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dex_gloves": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Gloves"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity/Intelligence Gloves",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dexint_gloves",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dexint_gloves",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dexint_gloves",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dexint_gloves",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dexint_gloves",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dexint_gloves",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dexint_gloves": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Gloves"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence Gloves",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_int_gloves",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_int_gloves",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_int_gloves",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_int_gloves",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_int_gloves",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_int_gloves",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_int_gloves": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Gloves"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence/Strength Gloves",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_intstr_gloves",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_intstr_gloves",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_intstr_gloves",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_intstr_gloves",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_intstr_gloves",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_intstr_gloves",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_intstr_gloves": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Gloves"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Strength Boots",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_str_boots",
-							"any_condition": {
-								"hide_str_boots": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_str_boots",
+							"strictness": ">= 1"
 						},
 						{
 							"exact_base_type": "_t2_str_boots",
-							"any_condition": {
-								"hide_str_boots": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
 						},
 						{
-							"exact_base_type": "_t1_strdex_boots",
-							"any_condition": {
-								"hide_strdex_boots": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"exact_base_type": "_t2_str_boots",
+							"area_level": "< 80"
 						},
 						{
-							"exact_base_type": "_t2_strdex_boots",
-							"any_condition": {
-								"hide_str_boots": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_boots",
+							"item_tier": "> 3"
 						},
 						{
-							"exact_base_type": "_t1_dex_boots",
-							"any_condition": {
-								"hide_dex_boots": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dex_boots",
-							"any_condition": {
-								"hide_dex_boots": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_dexint_boots",
-							"any_condition": {
-								"hide_dexint_boots": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dexint_boots",
-							"any_condition": {
-								"hide_dexint_boots": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_int_boots",
-							"any_condition": {
-								"hide_int_boots": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_int_boots",
-							"any_condition": {
-								"hide_int_boots": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_intstr_boots",
-							"any_condition": {
-								"hide_intstr_boots": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_intstr_boots",
-							"any_condition": {
-								"hide_intstr_boots": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_boots",
+							"memory_strands": "> 0"
 						}
 					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_str_boots": false
+					},
 					"rarity": [
 						"rare"
 					],
 					"exact_class": [
 						"Boots"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Strength/Dexterity Boots",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_strdex_boots",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_strdex_boots",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_strdex_boots",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_strdex_boots",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_strdex_boots",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_strdex_boots",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_strdex_boots": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Boots"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity Boots",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dex_boots",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dex_boots",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dex_boots",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dex_boots",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dex_boots",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dex_boots",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dex_boots": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Boots"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity/Intelligence Boots",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dexint_boots",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dexint_boots",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dexint_boots",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dexint_boots",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dexint_boots",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dexint_boots",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dexint_boots": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Boots"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence Boots",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_int_boots",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_int_boots",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_int_boots",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_int_boots",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_int_boots",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_int_boots",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_int_boots": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Boots"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence/Strength Boots",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_intstr_boots",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_intstr_boots",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_intstr_boots",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_intstr_boots",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_intstr_boots",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_intstr_boots",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_intstr_boots": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Boots"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Strength Body Armours",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_str_body_armours",
-							"any_condition": {
-								"hide_str_body_armours": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_str_body_armours",
+							"strictness": ">= 1"
 						},
 						{
 							"exact_base_type": "_t2_str_body_armours",
-							"any_condition": {
-								"hide_str_body_armours": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
 						},
 						{
-							"exact_base_type": "_t1_strdex_body_armours",
-							"any_condition": {
-								"hide_strdex_body_armours": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"exact_base_type": "_t2_str_body_armours",
+							"area_level": "< 80"
 						},
 						{
-							"exact_base_type": "_t2_strdex_body_armours",
-							"any_condition": {
-								"hide_str_body_armours": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_body_armours",
+							"item_tier": "> 3"
 						},
 						{
-							"exact_base_type": "_t1_dex_body_armours",
-							"any_condition": {
-								"hide_dex_body_armours": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dex_body_armours",
-							"any_condition": {
-								"hide_dex_body_armours": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_dexint_body_armours",
-							"any_condition": {
-								"hide_dexint_body_armours": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dexint_body_armours",
-							"any_condition": {
-								"hide_dexint_body_armours": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_int_body_armours",
-							"any_condition": {
-								"hide_int_body_armours": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_int_body_armours",
-							"any_condition": {
-								"hide_int_body_armours": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_intstr_body_armours",
-							"any_condition": {
-								"hide_intstr_body_armours": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_intstr_body_armours",
-							"any_condition": {
-								"hide_intstr_body_armours": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_body_armours",
+							"memory_strands": "> 0"
 						}
 					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_str_body_armours": false
+					},
 					"rarity": [
 						"rare"
 					],
 					"exact_class": [
 						"Body Armours"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Strength/Dexterity Body Armours",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_strdex_body_armours",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_strdex_body_armours",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_strdex_body_armours",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_strdex_body_armours",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_strdex_body_armours",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_strdex_body_armours",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_strdex_body_armours": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Body Armours"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity Body Armours",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dex_body_armours",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dex_body_armours",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dex_body_armours",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dex_body_armours",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dex_body_armours",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dex_body_armours",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dex_body_armours": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Body Armours"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity/Intelligence Body Armours",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dexint_body_armours",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dexint_body_armours",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dexint_body_armours",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dexint_body_armours",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dexint_body_armours",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dexint_body_armours",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dexint_body_armours": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Body Armours"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence Body Armours",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_int_body_armours",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_int_body_armours",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_int_body_armours",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_int_body_armours",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_int_body_armours",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_int_body_armours",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_int_body_armours": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Body Armours"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence/Strength Body Armours",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_intstr_body_armours",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_intstr_body_armours",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_intstr_body_armours",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_intstr_body_armours",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_intstr_body_armours",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_intstr_body_armours",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_intstr_body_armours": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Body Armours"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Strength Helmets",
+			"rules": [
 				{
 					"group": [
 						{
 							"exact_base_type": "_t1_str_helmets",
-							"any_condition": {
-								"hide_str_helmets": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_str_helmets",
+							"strictness": ">= 1"
 						},
 						{
 							"exact_base_type": "_t2_str_helmets",
-							"any_condition": {
-								"hide_str_helmets": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
 						},
 						{
-							"exact_base_type": "_t1_strdex_helmets",
-							"any_condition": {
-								"hide_strdex_helmets": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
+							"exact_base_type": "_t2_str_helmets",
+							"area_level": "< 80"
 						},
 						{
-							"exact_base_type": "_t2_strdex_helmets",
-							"any_condition": {
-								"hide_str_helmets": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_helmets",
+							"item_tier": "> 3"
 						},
 						{
-							"exact_base_type": "_t1_dex_helmets",
-							"any_condition": {
-								"hide_dex_helmets": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dex_helmets",
-							"any_condition": {
-								"hide_dex_helmets": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_dexint_helmets",
-							"any_condition": {
-								"hide_dexint_helmets": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_dexint_helmets",
-							"any_condition": {
-								"hide_dexint_helmets": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_int_helmets",
-							"any_condition": {
-								"hide_int_helmets": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_int_helmets",
-							"any_condition": {
-								"hide_int_helmets": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
-						},
-						{
-							"exact_base_type": "_t1_intstr_helmets",
-							"any_condition": {
-								"hide_intstr_helmets": false
-							},
-							"label": {
-								"border": "200 200 00 255"
-							}
-						},
-						{
-							"exact_base_type": "_t2_intstr_helmets",
-							"any_condition": {
-								"hide_intstr_helmets": false
-							},
-							"area_level": "< 80",
-							"strictness": 0,
-							"item_tier": "> 1"
+							"exact_base_type": "_t2_str_helmets",
+							"memory_strands": "> 0"
 						}
 					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_str_helmets": false
+					},
 					"rarity": [
 						"rare"
 					],
 					"exact_class": [
 						"Helmets"
 					]
-				},
+				}
+			]
+		},
+		{
+			"category": "Rare Strength/Dexterity Helmets",
+			"rules": [
 				{
-					"comment": "I have no idea what the value of talismans are so show everything until I know more",
+					"group": [
+						{
+							"exact_base_type": "_t1_strdex_helmets",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_strdex_helmets",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_strdex_helmets",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_strdex_helmets",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_strdex_helmets",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_strdex_helmets",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_strdex_helmets": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Helmets"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity Helmets",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dex_helmets",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dex_helmets",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dex_helmets",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dex_helmets",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dex_helmets",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dex_helmets",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dex_helmets": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Helmets"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Dexterity/Intelligence Helmets",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_dexint_helmets",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_dexint_helmets",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_dexint_helmets",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_dexint_helmets",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_dexint_helmets",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_dexint_helmets",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_dexint_helmets": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Helmets"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence Helmets",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_int_helmets",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_int_helmets",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_int_helmets",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_int_helmets",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_int_helmets",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_int_helmets",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_int_helmets": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Helmets"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Intelligence/Strength Helmets",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_intstr_helmets",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t1_intstr_helmets",
+							"strictness": ">= 1"
+						},
+						{
+							"exact_base_type": "_t2_intstr_helmets",
+							"strictness": ">= 1",
+							"item_tier": ">= 5"
+						},
+						{
+							"exact_base_type": "_t2_intstr_helmets",
+							"area_level": "< 80"
+						},
+						{
+							"exact_base_type": "_t2_intstr_helmets",
+							"item_tier": "> 3"
+						},
+						{
+							"exact_base_type": "_t2_intstr_helmets",
+							"memory_strands": "> 0"
+						}
+					],
+					"strictness": 0,
+					"identified": false,
+					"any_condition": {
+						"hide_intstr_helmets": false
+					},
+					"rarity": [
+						"rare"
+					],
+					"exact_class": [
+						"Helmets"
+					]
+				}
+			]
+		},
+		{
+			"category": "Rare Jewellry",
+			"rules": [
+				{
+					"group": [
+						{
+							"exact_base_type": "_t1_jewellry",
+							"label": "good_rare"
+						},
+						{
+							"exact_base_type": "_t2_jewellry"
+						},
+						{
+							"exact_base_type": "_t3_jewellry",
+							"area_level": ">= 68",
+							"hide": true
+						}
+					],
+					"rarity": [
+						"rare"
+					],
+					"any_condition": {
+						"hide_jewellry": false
+					},
+					"exact_class": [
+						"Amulets",
+						"Rings",
+						"Belts"
+					]
+				}
+			]
+		},
+		{
+			"category": "Talismans",
+			"comment": "I have no idea what the value of talismans are so show everything until I know more",
+			"rules": [
+				{
 					"exact_base_type": "_talismans"
+				}
+			]
+		},
+		{
+			"category": "Unidentified Rare Hider",
+			"comment": "All preceding rules are about showing rares, now we hide the rest of them.",
+			"rules": [
+				{
+					"area_level": ">= 68",
+					"hide": true,
+					"identified": false,
+					"rarity": [
+						"rare"
+					],
+					"exact_class": "_all_item_classes"
 				}
 			]
 		},

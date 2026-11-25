@@ -132,12 +132,12 @@
 	],
 	"_common_currencies": [
 		"Orb of Transmutation",
-		"Orb of Chance",
+		"Orb of Alteration",
 		"Orb of Augmentation"
 	],
 	"_uncommon_currencies": [
-		"Orb of Alteration",
 		"Orb of Alchemy",
+		"Orb of Chance",
 		"Blacksmith's Whetstone",
 		"Armourer's Scrap",
 		"Jeweller's Orb"
@@ -207,6 +207,7 @@
 		"Crusader's Exalted Orb",
 		"Redeemer's Exalted Orb",
 		"Warlord's Exalted Orb",
+		"Originator's Exalted Orb",
 		"Awakener's Orb",
 		"Orb of Dominance",
 		"Eldritch Chaos Orb",
@@ -743,7 +744,6 @@
 		"Elegant Ringmail"
 	],
 	"_t1_jewellry": [
-		"Amethyst Ring",
 		"Blue Pearl Amulet",
 		"Marble Amulet",
 		"Cerulean Ring",
@@ -758,6 +758,7 @@
 		"Cord Belt"
 	],
 	"_t2_jewellry": [
+		"Amethyst Ring",
 		"Bone Ring",
 		"Iolite Ring",
 		"Ruby Ring",
@@ -769,23 +770,23 @@
 		"Citrine Amulet",
 		"Agate Amulet",
 		"Leather Belt",
-		"Two-Stone Ring"
-	],
-	"_t3_jewellry": [
-		"Iron Ring",
-		"Lapis Amulet",
-		"Amber Amulet",
-		"Jade Amulet",
-		"Coral Amulet",
+		"Onyx Amulet",
+		"Seaglass Amulet",
 		"Chain Belt",
 		"Diamond Ring",
 		"Unset Ring",
-		"Gold Amulet",
+		"Lapis Amulet",
+		"Amber Amulet",
+		"Jade Amulet",
+		"Two-Stone Ring"
+	],
+	"_t3_jewellry": [
 		"Gold Ring",
+		"Gold Amulet",
+		"Iron Ring",
+		"Coral Amulet",
 		"Moonstone Ring",
 		"Paua Amulet",
-		"Seaglass Amulet",
-		"Onyx Amulet",
 		"Paua Ring",
 		"Rustic Sash",
 		"Cloth Belt",
@@ -1033,7 +1034,9 @@
 		"Dialla's Subjugation",
 		"Brother's Stash",
 		"The Magma Crab",
-		"Heterochromia"
+		"Heterochromia",
+		"Brush, Paint and Palette",
+		"The Nurse"
 	],
 	"_dog_uniques": [
 		"Brass Spirit Shield",

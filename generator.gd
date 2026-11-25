@@ -121,6 +121,7 @@ func _construct_filter(categories : Array) -> Array[PackedStringArray]:
 			m_rule = rule
 			var group : Array = []
 
+			# TODO: Nested groups?
 			if rule.has("group"):
 				group = rule["group"]
 			else:
@@ -411,7 +412,13 @@ func _construct_line(layout_key : String, layout_value : Variant, exact : bool) 
 		var filter_string : PackedStringArray = []
 
 		for type : String in layout_value:
-			filter_string.append("\"%s\"" % type)
+			if type.begins_with("_"):
+				if m_string_collections.has(type):
+					filter_string.append(" ".join(m_string_collections[type]))
+				else:
+					filter_string.append(m_macros[type])
+			else:
+				filter_string.append("\"%s\"" % type)
 
 		if exact:
 			return "\t%s == %s" % [
