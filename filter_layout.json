@@ -1485,7 +1485,7 @@
 						"rare"
 					],
 					"any_condition": {
-						"hide_thrusting_swords": false
+						"hide_daggers": false
 					},
 					"exact_class": [
 						"Daggers"
