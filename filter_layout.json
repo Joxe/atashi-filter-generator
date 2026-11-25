@@ -795,6 +795,17 @@
 					"label": {
 						"text": "163 141 109 255"
 					}
+				},
+				{
+					"rarity": [
+						"rare"
+					],
+					"fractured": true,
+					"has_mod": "_leader_veiled_mods",
+					"label": {
+						"text": "163 141 109 255"
+					},
+					"effect": "green"
 				}
 			]
 		},
@@ -912,9 +923,9 @@
 					"any_condition": {
 						"patch_3.30": true
 					},
-					"effect": "yellow",
+					"effect": "blue",
 					"icon": {
-						"colour": "yellow",
+						"colour": "blue",
 						"shape": "kite",
 						"size": "small"
 					}
@@ -923,6 +934,7 @@
 		},
 		{
 			"category": "Currency",
+			"comment": "Currencies only have rules for *when* something gets hidden, if it's not explicitly marked as hidden it will be shown. The more common currencies are being hidden, even in larger stacks, as you approach the late game. SSF is more lenient and Ruthless is basically always showing everything.",
 			"rules": [
 				{
 					"hide": true,
@@ -935,10 +947,7 @@
 					"group": [
 						{
 							"exact_base_type": "_dog_currencies",
-							"area_level": ">= 10",
-							"any_condition": {
-								"ruthless": false
-							}
+							"area_level": ">= 10"
 						},
 						{
 							"stack_size": 1,
@@ -954,8 +963,9 @@
 							"stack_size": "< 10",
 							"exact_base_type": "_common_currencies",
 							"area_level": ">= 75",
-							"any_condition": {
-								"ssf": false
+							"all_conditions": {
+								"ssf": false,
+								"ruthless": false
 							}
 						},
 						{
@@ -970,8 +980,9 @@
 							"area_level": ">= 72",
 							"exact_base_type": "_uncommon_currencies",
 							"stack_size": "< 3",
-							"any_condition": {
-								"ssf": false
+							"all_conditions": {
+								"ssf": false,
+								"ruthless": false
 							}
 						},
 						{
@@ -986,8 +997,9 @@
 							"exact_base_type": "_uncommon_currencies",
 							"area_level": ">= 75",
 							"stack_size": "< 5",
-							"any_condition": {
-								"ssf": false
+							"all_conditions": {
+								"ssf": false,
+								"ruthless": false
 							}
 						},
 						{
